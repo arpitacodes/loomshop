@@ -1,0 +1,255 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/*//font-size: 100%;
+	//font: inherit;*/
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/**  *PAGE STYLES**  */
+body{
+	background: #241be8;
+	font-family:  serif, sans-serif;
+	font-size: 18.5px;
+}
+
+header{
+	width: 100%;
+	height: auto;
+	margin: auto;
+	background: #f7f7f7;
+}
+nav {display: flex;}
+
+a{text-decoration: none;}
+
+a:hover{color: chocolate;}
+
+li{	list-style: none;	}
+
+.welcome-wrapper{
+	text-align: center;
+    font-size: smaller;
+    color: chocolate;
+    padding-top: 3px;
+}
+
+.logo-div {width: 35%;}
+
+.nav-wrapper{
+	display: flex;
+	margin-left: 25px;
+    width: 85%;
+}
+
+.main_nav{
+	margin-top: 19.5px;
+	width: 45%;
+}
+
+
+.main_nav ul {display: flex;}
+.main_nav li{padding: 3px 15px ;}
+
+ 
+
+.cat_main_list .cat_lists{display: none;}
+
+.drop-list1 .cat_lists {
+	position: absolute;
+	width: 7.5%;
+	margin-top: 4px;
+	background: white;
+	padding: 10px;
+	
+}
+.drop-list1 ul.cat_lists {
+    border: 1px solid chocolate;
+    border-radius: 5px;
+    width: auto;
+}
+.drop-list1:hover .cat_lists {display: inline-block;}
+
+
+
+.icon_wrapper{
+	display: flex;
+	margin-top: 15px;
+    font-size: 22px;
+    width: 10%;
+}
+.icon_wrapper .user_icon{
+	margin-right: 25px;
+	padding: 3px;
+}
+.cart_icon{padding: 3px;}
+ li, i.fas.fa-user, i.fas.fa-cart-shopping {color:#551a99;}
+ i.fas.fa-user:hover {	color: chocolate;}
+  i.fas.fa-cart-shopping:hover {color: chocolate;}
+
+
+  /****
+   * * HTML PAGE FOR BASIC CODE OF PHP like(DATABASE-CONNECTION, TABLE-Connect)ETC.
+   * 
+   * index.php*
+   * */
+
+   /*
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loom's Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="./styles/index.css" media="all" />
+
+</head>
+<body>
+    <!--    - HEADER  -->
+
+      <header>
+        <div class="welcome-wrapper">
+          
+          <div class="welcome">
+            <p>Hello There!!
+              <b>Welcome</b>
+              on this site
+            </p>
+          </div>
+
+        </div>
+
+<!-- NAVIGATION AREA -->        
+        <nav>
+
+          <div class="nav-wrapper">
+          
+          <div class="logo-div">
+            <a href="#index.php" class="logo">
+              <img src="./images/logo3.PNG" alt="SiteLogo" width="150" height="40" style="margin-left: 15px;" >
+            </a>
+          </div>  
+
+          <div class="main_nav">
+            <ul>
+              <li class="drop-list">
+                <a href="#">Home</a>
+              </li>
+
+              <li class="drop-list1">
+                <a href="#">Category</a>
+
+                <div class="cat_main_list">
+
+                  <ul class="cat_lists">
+                  
+<?php
+    $get_categories = "SELECT * FROM categories";
+    $run_categories = mysqli_query($connection, $get_categories);
+
+      while ($row_categories = mysqli_fetch_array($run_categories)) 
+      {                        // code...
+
+          $category_id = $row_categories['category_id'];
+          $category_womans = $row_categories['womens'];
+          $category_mans = $row_categories['mans'];
+          $category_kides = $row_categories['kides'];
+          $category_house = $row_categories['house'];
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_womans </a></li>";
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_mans </a></li>";
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_kides </a> </li>";
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_house </a></li>";
+
+      }
+?> 
+                  <!--  <li class="drop-sublist">
+                      <a href="#lists">Women's</a>
+                    </li>
+                    <li class="drop-sublist">
+                      <a href="#lists">Man's</a>
+                    </li>
+                    <li class="drop-sublist">
+                      <a href="#lists">kide's</a>
+                    </li>
+                    <li class="drop-sublist">
+                      <a href="#lists">Home</a>
+                    </li> -->
+                     
+                  </ul>
+                </div>
+              </li> 
+
+              <li class="drop-list">
+                <a href="#">Blog</a>
+              </li>
+              <li class="drop-list">
+                <a href="#">About Us</a>
+              </li>
+            </ul>
+          </div>
+
+          </div>
+
+          <div class="icon_wrapper">
+            
+            <div class="user_icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="cart_icon">
+              <!--  <i class="fas fa-trash"></i> -->
+              <i class="fas fa-cart-shopping"></i>
+            </div>
+
+          </div> 
+
+        </nav>
+        
+      </header>
+
+
+</body>
+</html>
+*/
