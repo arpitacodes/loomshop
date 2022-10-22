@@ -2,9 +2,6 @@
   include("./includes/PhpDBConnect.php"); 
   include("./functions/indexFunction.php");
     //$connection = mysqli_connect("localhost","root","","loomshop");
-
-  
-           
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -141,28 +138,143 @@
               <ul class="dropdown-panel-list">
 
                 <li class="menu-title">
-                  <a href="#">Cloths Types</a>
+                  <a href="#">Baby&Kids</a>
                 </li>
                 <?php
-                   getClothtypes();
+                   getKids();
                 ?> 
               </ul>
-               <ul class="dropdown-panel-list">
+
+              <ul class="dropdown-panel-list">
 
                 <li class="menu-title">
-                  <a href="#">Seasons</a>
+                  <a href="#">Men's</a>
                 </li>
-                <?php
-                   getSeasons();
-                ?> 
+                <?php    getMans();        ?>
+                           
               </ul>
-              
 
-<!-- This is single categories Blog -->
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Women's</a>
+                </li>
+                <?php   getWomans();   ?>
+
+              </ul>
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">House Decoration</a>
+                </li>
+                  <?php getHouse(); ?>
+
+              </ul>
+
+            </div>
+          </li>
+<!-- This is single categories -->
+          <li class="menu-category">
+            <a href="#" class="menu-title">Men's</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">Shirt</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Shorts & Jeans</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Safety Shoes</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Wallet</a>
+              </li>
+
+            </ul>
+          </li>
+<!-- This is single categories -->
+          <li class="menu-category">
+            <a href="#" class="menu-title">Women's</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">Dress & Frock</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Earrings</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Necklace</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Makeup Kit</a>
+              </li>
+
+            </ul>
+          </li>
+<!-- This is single categories -->
+          <li class="menu-category">
+            <a href="#" class="menu-title">Jewelry</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">Earrings</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Couple Rings</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Necklace</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Bracelets</a>
+              </li>
+
+            </ul>
+          </li>
+<!-- This is single categories -->
+          <li class="menu-category">
+            <a href="#" class="menu-title">Perfume</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">Clothes Perfume</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Deodorant</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Flower Fragrance</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Air Freshener</a>
+              </li>
+
+            </ul>
+          </li>
+<!-- This is single categories -->
           <li class="menu-category">
             <a href="#" class="menu-title">Blog</a>
           </li>
-<!-- This is single categories Offer -->
+<!-- This is single categories -->
           <li class="menu-category">
             <a href="#" class="menu-title">Hot Offers</a>
           </li>
@@ -196,7 +308,7 @@
       </button>
 
       <button class="action-btn" data-mobile-menu-open-btn>
-        <!-- <i class="fa-solid fa-border-all"></i>  user icon for login-->
+        <!-- <i class="fa-solid fa-border-all"></i> -->
         <ion-icon class="fa-solid fa-border-all" name="grid-outline"></ion-icon>
       </button>
 
@@ -225,7 +337,7 @@
         <li class="menu-category">
 
           <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Cloths Types</p>
+            <p class="menu-title">Men's</p>
 
             <div>
               <ion-icon class="fa-regular fa-plus" name="add-outline" class="add-icon"></ion-icon>                
@@ -234,7 +346,7 @@
           </button>
 
           <ul class="submenu-category-list" data-accordion>
-            <?php getClothtypes(); ?> 
+            <?php getMans(); ?> 
           </ul>
 
         </li>
@@ -242,7 +354,7 @@
         <li class="menu-category">
 
           <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Season</p>
+            <p class="menu-title">Women's</p>
 
             <div>
               <ion-icon class="fa-regular fa-plus" name="add-outline" class="add-icon"></ion-icon>                
@@ -252,16 +364,51 @@
 
           <ul class="submenu-category-list" data-accordion>
 
-            <?php  getSeasons(); ?>
+            <?php getWomans(); ?>
 
         </ul>
 
       </li>
-<!-- This is single categories Blog -->
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">Baby&Kids</p>
+
+            <div>
+              <ion-icon class="fa-regular fa-plus" name="add-outline" class="add-icon"></ion-icon>                
+              <ion-icon class="fa-solid fa-minus" name="remoe-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+
+          <ul class="submenu-category-list" data-accordion>
+              <?php getKids(); ?>
+
+            </ul>
+
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title">House Decoration</p>
+
+            <div>
+             <ion-icon class="fa-regular fa-plus" name="add-outline" class="add-icon"></ion-icon>                
+              <ion-icon class="fa-solid fa-minus" name="remoe-outline" class="remove-icon"></ion-icon>
+            </div>
+          </button>
+
+          <ul class="submenu-category-list" data-accordion>
+            <?php getJouse(); ?>
+            </ul>
+
+        </li>
+
         <li class="menu-category">
           <a href="#" class="menu-title">Blog</a>
         </li>
-<!-- This is single categories Offer -->
+
         <li class="menu-category">
           <a href="#" class="menu-title">Hot Offers</a>
         </li>
@@ -365,55 +512,6 @@
 
       </div>
       <!-- products wrapper endding point -->
-<h1>All Season fields</h1>
-      <?php 
-        $select = "SELECT * FROM season";//WHERE season_id = 3
-
-        $result = mysqli_query($connection,$select);
-
-        $rowCount= mysqli_num_rows($result);
-
-        if($rowCount > 0)
-        {
-          while($row = mysqli_fetch_assoc($result)){
-            echo $row['season_id']. " ".$row['season_name']."<br>";
-          }
-        }else echo "No results found!!";
-      ?>
-
-<h1>Insert VALUES INTO Season Table</h1>
-  <div class="seasonForm">
-    <form action="index.php" method="POST">
-      <div id="field1" style="width: 35%; text-align: center;">
-        <input type="number" name="season_id" style=" " placeholder="Season ID"><br>
-        <input type="text" name="season_name" style=" " placeholder="Season Name"><br>
-        <button style="padding: 3px;"><input type="submit" name="submit" value="Insert"></button>        
-      </div>
-    </form>
-  </div>
-        <?php 
-             if (isset($_POST['submit'])) 
-            {
-                
-                $season_id = $_REQUEST['season_id'];
-                $season_name = $_REQUEST['season_name'];
-
-            $sql = "INSERT INTO season (season_id,season_name) VALUES ('$season_id','$season_name')";
-                $row =mysqli_query($connection, $sql);
-                if($row){
-               
-               echo "Inserted Sucsefully!!";//<script> alert('Inserted Sucsefully!!')</script>
-             }
-              else {die(mysqli_error($connection));}             
-            
-                                
-          }
-        ?>
-
-
-    
-
-<a href="./thankyou.php" > Thank you </a>
 
 
   </main>
@@ -432,42 +530,183 @@
 </body>
 </html>
 
-<!-- 
-$stmt= mysqli_stmt_init($connection);
-            
+<!--*** S for Sutwala logo address
 
-            if(!mysqli_stmt_prepare($stmt,$insert))
-            {
-              header("Location: index.php?error=sqlerror");
-              exit();
-            }else {
-              mysqli_stmt_bind_param($stmt, "s", $season_name);
-              mysqli_stmt_execute($stmt);
-              $result = mysqli_stmt_get_result($stmt);
+ https://img.freepik.com/premium-vector/needle-thread-silhouette-icon-vector-illustration-tailor-logo-with-needle-symbol-curvy_98734-420.jpg?w=2000 -->
 
-           /* if ($row_season = mysqli_fetch_assoc($result)) {
-              $season_name = $row_season['season_name'];
-              echo "<script> alert('Inserted Sucsefully!!')</script>";
-            }*/
-              /*echo "<script> alert('insert is not working')</script>";
-              exit();
-*/
-            }
 
-              < ? php 
-      
+<!-- ///for Main Categories 
+<php
+  $get_mainCategories = "SELECT * FROM main_categories";
+    $run_mainCategories = mysqli_query($connection, $get_mainCategories);
 
-      
+      while ($row_mainCategories = mysqli_fetch_array($run_mainCategories)) 
+      {                        // code...
 
-      $showSeason = $connection->query("SELECT * FROM season");
+          $mainCategory_id = $row_mainCategories['main_category_id'];
+          $mainCategory_kides = $row_mainCategories['main_category_title'];
+         
+                echo "<a href='index.php?categori=$mainCategory_id'>$mainCategory_kides </a>";               
 
-      $rows = $showSeason->fetchAll();
-
-      foreach ($rows as $row) {
-        echo "<br><br><br><b>Season Name: </b>",$row['season_name'];
       }
-    
 
-      ? >
- -->
+?> -->
 
+
+<!-- FUNCTIONS FOR CATEGORIES -->
+
+
+function getMans(){
+    global  $connection;
+  $get_categories = "SELECT * FROM categories";
+    $run_categories = mysqli_query($connection, $get_categories);
+
+      while ($row_categories = mysqli_fetch_array($run_categories)) 
+      {                        // code...
+
+          $category_id = $row_categories['category_id'];
+          $category_mans = $row_categories['mans'];
+         
+                echo "<li class='panel-list-item'><a href='index.php?categori=$category_id'>$category_mans </a></li>";
+               
+
+      }
+}
+
+//**Womans Categories **
+
+function getWomans(){
+    global  $connection;
+  $get_categories = "SELECT * FROM categories";
+    $run_categories = mysqli_query($connection, $get_categories);
+
+      while ($row_categories = mysqli_fetch_array($run_categories)) 
+      {                        // code...
+
+          $category_id = $row_categories['category_id'];
+          $category_womans = $row_categories['womens'];
+         
+     echo "<li class='panel-list-item'><a href='index.php?categori=$category_id'> 
+        $category_womans</a></li>";
+               
+
+      }
+}
+
+//**House Decoretion Categories **
+
+function getHouse() {
+    global  $connection;
+  $get_categories = "SELECT * FROM categories";
+    $run_categories = mysqli_query($connection, $get_categories);
+
+      while ($row_categories = mysqli_fetch_array($run_categories)) 
+      {                        // code...
+
+          $category_id = $row_categories['category_id'];
+          $category_house = $row_categories['house_decoration'];
+         
+                echo "<li class='panel-list-item'><a href='index.php?categori=$category_id'>$category_house</a></li>";
+               
+
+      }
+}
+
+
+
+
+<!-- FOR  FORM InsertProducts INIT-->
+
+<!-- wrapper_select_option for category of products 2 -->
+      <!--      <div class="wrapper_select_option">
+            <select name="product_category" id="prod_select">
+
+              <div class="opption_tag">
+                <option value="mens">choose Category for Men's </option>
+              </div>
+
+                < ? php
+                      $get_categories = "SELECT * FROM categories";
+                      $run_categories = mysqli_query($connection, $get_categories);
+
+                        while ($row_categories = mysqli_fetch_array($run_categories)) 
+                        {                        // code...
+
+                            $category_id = $row_categories['category_id'];
+                            $category_mans = $row_categories['mans'];
+                           
+                                    echo "<option class='panel-list-item' value='$category_id'>$category_mans</option>"; 
+                               
+
+                      }
+                ? > 
+                  </select>
+              </div> -->
+<!-- wrapper_select_option for category of products 3 -->
+              <!-- <div class="wrapper_select_option" style="">
+            
+                  <select name="product_category" id="prod_select">
+              <div class="opption_tag">
+                <option value="Womens">choose Category for Women's </option>
+              </div>
+
+                < ? php
+
+                        $get_categories = "SELECT * FROM categories";
+                        $run_categories = mysqli_query($connection, $get_categories);
+
+                          while ($row_categories = mysqli_fetch_array($run_categories)) 
+                          {                        // code...
+
+                              $category_id = $row_categories['category_id'];
+                              $category_womans = $row_categories['womens'];
+                             
+                        echo "<option class='panel-list-item' value='$category_id'>$category_womans</option>"; 
+                                   
+
+                      }
+                ? > 
+              </select>
+          </div> -->
+<!-- wrapper_select_option for category of products 4 -->
+    <!--      <div class="wrapper_select_option">
+
+              <select name="product_category" id="prod_select">
+
+                <div class="opption_tag">
+                  <option value="Home&Decoration">choose Category for Home&Decoration </option>
+                </div>
+ 
+                < ? php
+                    $get_categories = "SELECT * FROM categories";
+                    $run_categories = mysqli_query($connection, $get_categories);
+
+                      while ($row_categories = mysqli_fetch_array($run_categories)) 
+                      {                        // code...
+
+                          $category_id = $row_categories['category_id'];
+                          $category_house = $row_categories['house_decoration'];
+                         
+                                  echo "<option class='panel-list-item' value='$category_id'>$category_house</option>"; 
+                               
+
+                      }
+                ? >
+
+            </select>
+
+          </div> -->
+
+          </div>
+      <!-- all_select div ends  -->
+
+
+        <div class="input_submit">
+          <input type="submit" id="but_submit" name="insert_product" value="InsertProduct">
+        </div>
+  
+      
+      </form>
+
+  </div>
+  <!-- product_form div Ends -->
