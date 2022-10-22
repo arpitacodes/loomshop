@@ -1,6 +1,23 @@
 <?php
   include_once("./includes/adminDBconnect.php");    
 
+  	$form_complete = null;
+  	$form_complete ?: true;
+  if($form_complete)
+  {
+  	foreach ($_POST as $key => $value) 
+  	{
+  		if('product_submit' != $key)
+  		{
+  			if (is_array($value)) 
+  			{
+  			$value = implode(', ', $value);
+  		    }
+  		
+  		echo "<p><b>". ucfirst($key). " is". "</b> is $value.</p>";
+  	    }
+    }
+ }
   
  
 ?> 
@@ -15,43 +32,43 @@
 			font-family: serif, sans-serif;
 		}
 		.product_form{
-			width: 100%;
+			width: 75%;
 			padding: 5px;
+			padding-left: 15%;
+			display: inline-block;
 		}
 		input, textarea {
 			    background: transparent;
 		}
-		.legened{text-align: center;}
+		
 
 		.wrapper_label_input{
 			display: flex;
-			gap: 30px;
-			width: 100%;
+			gap: 1px;
+			width: 55%;
 			margin: 5px;
-			color: #b02020;
+			
 		}
 
 		.label_aree{
 			font-size: 16px;
 			padding: 3px;
-			width: 40%;
-			text-align: end;
+			width: 33%;
+			
 		}
 
 		.all_select {
-		    width: 100%;
+		    width: 70%;
+		    display: flex;
 		}
 
 		.selectlabel {
-		    width: 40%;
-		    text-align: end;
-		    color: #b51010;
+		    width: 26.5%;
 		    font-size: 18px;
 		    font-style: oblique;
 		}
 		.wrapper_select_option {
-		    text-align: end;
-		    width: 65%;
+		     width: 64%;
 		    padding: 6px;
 		}
 		select#prod_select {
@@ -61,7 +78,7 @@
 			    }
 	 	.input_submit{
 	 		margin-top: 10px;
-    		text-align-last: center;
+    		padding-left: 15%;
 	 	}
 	 	input#but_submit {
 		    padding: 5px 10px;
@@ -78,24 +95,25 @@
 
 </head>
 <body>
+    <?php  
+		if( isset( $_POST['product_title']) && empty( trim($_POST['product_title'])))
+		{
+		  echo "<p class=\"alert\"style='color:red; font-size:22px;'>Product Name is required</p>";
+		  exit;
+		}					  
+									 
+    ?>
 
 
 	<div class="product_form">
 <!-- //action="InsertProduct.php" -->
-		<form  name="container" method="POST"  enctype="multipart/form-data">
+		<form  name="container" action="InsertProduct.php" method="POST"  enctype="multipart/form-data">
 
 			  <legend class="legened"><h2>To Insert Product Details</h2></legend>
 				
 				<div class="wrapper_label_input">
 					
 					<div class="label_aree">
-						<?php  
-						 if(isset($_POST['product_title']) && empty($_POST['product_title']))
-						 {
-							echo "Product Name is required";
-						 }					  
-									 
-						?>
 						<label class="labless">Product's Name/Title</label><br>
 					</div>
 
@@ -201,7 +219,7 @@
 					</div>
 
 					<div class="input_field">
-						<input type="file" id="prod_img1" name="product_img1" required>
+						<input type="file" id="prod_img1" name="product_img1">
 					</div>
 				</div>
 				
@@ -228,6 +246,7 @@
 
 
 				<!-- Seasons STarts  -->
+			<div class="all_select">
 				<div class="selectlabel">
 					<label class="labless">Choose Season</label><br>
 				</div>
@@ -255,6 +274,7 @@
 							?> 
 			            </select>
 			        </div> 
+			</div>
 
 				<!-- all_select div start  -->
 				<div class="all_select">
@@ -395,16 +415,17 @@ else {
 	move_uploaded_file($temp_name3, "./products_images/$product_img3");
 
 
- $insert_products = "INSERT INTO products(clothtype_id, season_id, products_title, product_description, product_price, product_status, product_img1, product_img2, product_img3, product_uses,product_keywords, create_at) VALUES('$product_cloth_type','$product_season',
+$insert_products = "INSERT INTO products(clothtype_id, season_id, products_title, product_description,product_price, product_status, product_img1, product_img2, product_img3, product_uses,product_keywords, create_at) VALUES('$product_cloth_type','$product_season',
 	'$product_title','$product_description', '$sales_price', '$status','$product_img1',
 	'$product_img2','$product_img3','$product_uses','$product_keywords', NOW())";
 
 
 		$run_productInsertion = mysqli_query($connection, $insert_products);
-
+ 
 		 if($run_productInsertion)
 		 {
-                echo "<script> alert('Inserted Sucsefully!!') </script>";
+            echo "<script> alert('Inserted Sucsefully!!') </script>";
+               
          }else {die(mysqli_error($connection));}
 
 	}

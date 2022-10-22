@@ -51,9 +51,15 @@ function getSeasons(){
 
  function getProducts() {
  		global  $connection;
- 	  $get_products = "SELECT * FROM products ORDER BY rand()"; //LIMIT
+
+      if(!isset($_GET['clothtypes']))
+      {
+        if(!isset($_GET['seasons']))
+        {
+
+ 	        $get_products = "SELECT * FROM products ORDER BY rand()"; //LIMIT
             
-            $runs_products = mysqli_query($connection, $get_products);
+          $runs_products = mysqli_query($connection, $get_products);
           
             while($row_products = mysqli_fetch_array($runs_products)) 
             {
@@ -86,55 +92,124 @@ function getSeasons(){
 
                 </div>               
 
-              ";
+                 ";
               // single product ends
 
             }
- }
+        }
+      }
+  }
 
 
+/*For Display acording to Seasons */
 
+function getSeasonProducts(){
+    global  $connection;
+      
+        if(isset($_GET['seasons']))
+        {
+
+          $season_id = $_GET['seasons'];
+          $get_season_products = "SELECT * FROM products WHERE season_id='$season_id'"; 
+            
+          $run_season_products = mysqli_query($connection, $get_season_products);
+
+           $countSeason = mysqli_num_rows($run_season_products);
+       if($countSeason == 0) echo "<h2><b>NO</b> Products are available for the season!! !!</h2>";
+          
+            while($row_season_products = mysqli_fetch_array($run_season_products)) 
+            {
+
+              $product_id = $row_season_products['products_id'];
+              $product_title = $row_season_products['products_title'];
+              $product_description = $row_season_products['product_description'];
+              $clothtype_id = $row_season_products['clothtype_id'];
+              $season_id = $row_season_products['season_id'];
+              $product_price = $row_season_products['product_price'];
+              $product_img = $row_season_products['product_img1'];
+              //$product_brand = $row_season_products['brand_id'];
+
+               // single product starts 
+
+              echo "
+                <div class='single_product'>
+
+                  <h3 class='product_head3'>$product_title</h3>
+
+                  <img src='./admins_area/products_images/$product_img' width='150' height='150' /> 
+                  <br>
+
+                  <p><b>Price: $product_price Rs./INR </b></p>
+
+                  <div class='img_a'>
+                    <a href='details.php?products_id=$product_id' style='float:left;'>Details</a>
+                    <a href='idex.php?add_cart=$product_id'><button style='float:right;'>Add to Cart</button></a>
+                  </div>  <br>   
+
+                </div>               
+
+                 ";
+              // single product ends
+
+            }
+        }
+}
+
+
+/*To Display related to Cloth Types Products*/
+
+function getClothTypeProducts() {
+    global  $connection;
+      
+        if(isset($_GET['clothtypes']))
+        {
+
+          $cloth_id = $_GET['clothtypes'];
+          $get_clothtype_products = "SELECT * FROM products WHERE clothtype_id='$cloth_id'"; 
+            
+          $run_clothtype_products = mysqli_query($connection, $get_clothtype_products);
+
+            $countCloth = mysqli_num_rows($run_clothtype_products);
+            if($countCloth == 0) echo "<h2><b>NO</b> Products Found in this Cloth Type!!</h2>";
+          
+            while($row_clothtype_products = mysqli_fetch_array($run_clothtype_products)) 
+            {
+
+              $product_id = $row_clothtype_products['products_id'];
+              $product_title = $row_clothtype_products['products_title'];
+              $product_description = $row_clothtype_products['product_description'];
+              $clothtype_id = $row_clothtype_products['clothtype_id'];
+              $season_id = $row_clothtype_products['season_id'];
+              $product_price = $row_clothtype_products['product_price'];
+              $product_img = $row_clothtype_products['product_img1'];
+              //$product_brand = $row_clothtype_products['brand_id'];
+
+               // single product starts 
+
+              echo "
+                <div class='single_product'>
+
+                  <h3 class='product_head3'>$product_title</h3>
+
+                  <img src='./admins_area/products_images/$product_img' width='150' height='150' /> 
+                  <br>
+
+                  <p><b>Price: $product_price Rs./INR </b></p>
+
+                  <div class='img_a'>
+                    <a href='details.php?products_id=$product_id' style='float:left;'>Details</a>
+                    <a href='idex.php?add_cart=$product_id'><button style='float:right;'>Add to Cart</button></a>
+                  </div>  <br>   
+
+                </div>               
+
+                 ";
+              // single product ends
+
+            }
+        }
+}
+    
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		
-  .single_product{
-    width: 15%;
-    height: auto;
-    border: none;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px hsl(0deg 0% 0% / 25%);
-    padding: 6px 3px;
-    margin-left: 15px;
-
-    
-  }
-
-.product_head3 {
-    width: 10rem;
-    height: 15%;
-    text-transform: uppercase;
-}
-
-.img_a > a, button {
-    color: #2a5104;
-    font-size: 12px;
-    text-transform: uppercase;
-  
-}
-.img_a > a:hover {color: var(--salmon-pink);}
-.img_a > button:hover {color: var(--salmon-pink);}
-
-	</style>
-</head>
-<body>
-	
-</body>
-</html>

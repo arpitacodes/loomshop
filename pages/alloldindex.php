@@ -525,7 +525,7 @@
   <!-- <script src="C:\xampp\htdocs\loomShop\js\fullweb.js"></script> -->
     <!-- <script src="C:\xampp\htdocs\looms\js\fullweb.js"></script> -->
   <!-- ionicon js link -->
-  <script type="modul" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.esm.js"></script>
+<script type="modul" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist.ionicons.ionicons.js"></script>
 </body>
 </html>
