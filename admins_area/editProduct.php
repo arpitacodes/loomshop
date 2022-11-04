@@ -1,24 +1,43 @@
 <?php
   include_once("./includes/adminDBconnect.php");    
 
-  	$form_complete = null;
-  	$form_complete ?: true;
-  if($form_complete)
-  {
-  	foreach ($_POST as $key => $value) 
-  	{
-  		if('product_submit' != $key)
-  		{
-  			if (is_array($value)) 
-  			{
-  			$value = implode(', ', $value);
-  		    }
-  		
-  		echo "<p><b>". ucfirst($key). " is". "</b> is $value.</p>";
-  	    }
-    }
+ if(isset($_GET['editProduct'])){
+
+ 	$edit_prod_id = $_GET['editProduct'];
+
+ 	$get_edit_prod="SELECT * FROM products WHERE products_id='$edit_prod_id'";
+ 	
+ 	$run_edit = mysqli_query($connection,$get_edit_prod);
+
+ 	$row_edit=mysqli_fetch_array($run_edit);
+
+ 	$update_pro_id = $row_edit['products_id'];
+
+ 	$pro_title =$row_edit['products_title'];
+ 	$pro_price =$row_edit['product_price'];
+ 	$pro_desc =$row_edit['product_description'];
+ 	$pro_keywords =$row_edit['product_keywords'];
+ 	$pro_uses =$row_edit['product_uses'];
+ 	$pro_img1 =$row_edit['product_img1'];
+ 	$pro_img2 =$row_edit['product_img2'];
+ 	$pro_img3 =$row_edit['product_img3'];
+ 	$cloth_type_id =$row_edit['clothtype_id'];
+ 	$season_id =$row_edit['season_id'];
+
  }
-  
+//To get the exact Cloth Type's Name for each Products
+ $get_clothtypes= "SELECT * FROM clothtypes WHERE clothtype_id='$cloth_type_id'";
+  $run_clothtypes=mysqli_query($connection,$get_clothtypes);
+  $row_clothtypes=mysqli_fetch_array($run_clothtypes);
+
+  $clothtype_title = $row_clothtypes['cloth_type'];
+
+//To get the exact Season's Name for each Products
+  $get_season= "SELECT * FROM season WHERE season_id='$season_id'";
+  $run_season=mysqli_query($connection,$get_season);
+  $row_season=mysqli_fetch_array($run_season);
+
+  $season_title = $row_season['season_name'];
  
 ?> 
 <!DOCTYPE html>
@@ -90,22 +109,14 @@
 
 </head>
 <body>
-    <?php  
-		if( isset( $_POST['product_title']) && empty( trim($_POST['product_title'])))
-		{
-		  echo "<p class=\"alert\"style='color:red; font-size:22px;'>Product Name is required</p>";
-		  exit;
-		}					  
-									 
-    ?>
-
+  
 <center>
 <div class="product_form">
 <!-- //action="InsertProduct.php" -->
-<form  name="container" action="InsertProduct.php" method="POST"  enctype="multipart/form-data">
+<form  name="container" action="" method="POST"  enctype="multipart/form-data">
 
 	<legend class="legened">
-		<h2>New Product's Details</h2>
+		<h2>Update/Edit Product's Details</h2>
 	</legend>
 				
 	<div class="wrapper_label_input">
@@ -116,7 +127,7 @@
 		</div>
 
 		<div class="input_field">
-			<input type="text" id="ProductTitle" name="product_title" required/>
+			<input type="text" id="ProductTitle" name="product_title" value="<?php echo $pro_title; ?>" />
 		</div>
 
 	</div>
@@ -124,11 +135,11 @@
 	<div class="wrapper_label_input">
 
 		<div class="label_aree">
-			 <label class="labless">Product's sales price</label><br>
+			 <label class="labless">Product's price</label><br>
 		</div>
 
 		<div class="input_field">
-			<input class="input_date" pattern="^\d*(\.\d{0,2})?$" type="number" id="Product_price" name="sales_price" id="sales" value="0000.00" required><br>
+			<input class="input_date" pattern="^\d*(\.\d{0,2})?$" type="number" id="Product_price" name="sales_price" id="sales" value="<?php echo $pro_price; ?>" ><br>
 		</div>
 
 	</div> 
@@ -141,6 +152,7 @@
 
 		<div class="text_field">
 			<textarea name="product_description" id="prod_textare" cols="30" rows="15" style="height: 100px;width: 165px;">			
+				<?php echo $pro_desc; ?>
 			</textarea>
 			<br>
 		</div>
@@ -155,7 +167,7 @@
 		</div>
 
 		<div class="input_field">
-			<input type="text" id="Prod_keyword" name="product_keywords" required>
+			<input type="text" id="Prod_keyword" name="product_keywords" value="<?php echo $pro_keywords; ?>">
 		</div>
 
 	</div>
@@ -167,7 +179,8 @@
 		</div>
 
 		<div class="text_field">
-			<textarea name="product_uses" id="prod_feature" cols="30" rows="15" style="height: 90px;width: 165px;">				
+			<textarea name="product_uses" id="prod_feature" cols="30" rows="15" style="height: 90px;width: 165px;" >
+			<?php echo $pro_uses; ?>				
 			</textarea><br>
 		</div>
 
@@ -176,30 +189,33 @@
 				
 	<div class="wrapper_label_input">
 		<div class="label_aree">
-			<label class="labless">Product's Image 1st</label><br>
+			<label class="labless">Product's Image Ist</label><br>
 		</div>
 
 		<div class="input_field">
 			<input type="file" id="prod_img1" name="product_img1">
+			<img src="products_images/<?php echo $pro_img1; ?>" width="60" height ="60">
 		</div>
 	</div>
 				
 	<div class="wrapper_label_input">
 		<div class="label_aree">
-			<label class="labless">Product's Image 2nd</label><br>
+			<label class="labless">Product's Image IInd</label><br>
 		</div>
 
 		<div class="input_field">
-			<input type="file" id="prod_img2" name="product_img2">
+			<input type="file" id="prod_img2" name="product_img2" >
+			<img src="products_images/<?php echo $pro_img2; ?>" width="60" height ="60">
 		</div>
 	</div>
 				
 	<div class="wrapper_label_input">
 		<div class="label_aree">
-			<label class="labless">Product's Image 3rd</label><br>
+			<label class="labless">Product's Image IIIrd</label><br>
 		</div>
 		<div class="input_field">
 			<input type="file" id="prod_img3" name="product_img3">
+			<img src="products_images/<?php echo $pro_img3; ?>" width="60" height="60">
 		</div>
 	</div>
 
@@ -216,7 +232,7 @@
       <select name="product_season" id="prod_select" style="margin-left: 5rem;">
 					
 		<div class="opption_tag">
-			<option value="season" >choose season</option>
+			<option value="<?php echo $season_id;?>" ><?php echo $season_title;?></option>
 		</div>
 		<?php
 
@@ -234,8 +250,8 @@ echo "<option class='panel-list-item' value='$season_id'>$season_name</option>";
 		               
 	   ?> 
 	  </select>
-			        </div> 
-			</div>
+	</div> 
+</div>
 
 <!-- all_select div start  -->
 <div class="all_select">
@@ -249,7 +265,9 @@ echo "<option class='panel-list-item' value='$season_id'>$season_name</option>";
 	<select name="product_cloth_type" id="prod_select" style="margin-left: 1.8rem;">
 						
 		<div class="opption_tag">
-			<option value="Cloths_type">Choose Cloths Type </option>
+			<option value="<?php echo $cloth_type_id;?>">
+				<?php echo $clothtype_title;?>					
+		    </option>
 		</div>
 		<?php
 			$get_clothtypes = "SELECT * FROM clothtypes";
@@ -271,7 +289,7 @@ echo "<option class='panel-list-item' value='$season_id'>$season_name</option>";
 
 		<div class="input_submit">
 		 <button id="input_submit_but">
-			<input id="but_submit" type="submit" name="product_submit" value="Insert Product">
+			<input id="but_submit" type="submit" name="update_product" value="Update Product">
 		 </button>
 		</div>
 
@@ -280,28 +298,30 @@ echo "<option class='panel-list-item' value='$season_id'>$season_name</option>";
 
 </center>
 <!-- <a href="../thankyou.php" > Thank you </a> -->
+
+
 </body>
 </html>
 
 <?php
 	
-	if(isset($_POST['product_submit']))
+	if(isset($_POST['update_product']))
 	{
 				//inputs/text variables
 
-		$product_title = $_REQUEST['product_title'];
+		$product_title = $_POST['product_title'];
 
-		$product_cloth_type = $_REQUEST['product_cloth_type'];
+		$product_cloth_type = $_POST['product_cloth_type'];
 
-		$product_season = $_REQUEST['product_season'];
+		$product_season = $_POST['product_season'];
 
-		$sales_price = $_REQUEST['sales_price'];
+		$sales_price = $_POST['sales_price'];
 
-		$product_description = $_REQUEST['product_description'];
+		$product_description = $_POST['product_description'];
 
-		$product_keywords = $_REQUEST['product_keywords'];
+		$product_keywords = $_POST['product_keywords'];
 
-		$product_uses = $_REQUEST['product_uses'];
+		$product_uses = $_POST['product_uses'];
 			
 		$status = 'on';
 
@@ -336,14 +356,15 @@ else {
 	move_uploaded_file($temp_name3, "./products_images/$product_img3");
 
 
-$insert_products = "INSERT INTO products (clothtype_id, season_id, products_title, product_description,product_price, product_status, product_img1, product_img2, product_img3, product_uses,product_keywords, create_at) VALUES('$product_cloth_type','$product_season','$product_title','$product_description', '$sales_price', '$status','$product_img1','$product_img2','$product_img3','$product_uses','$product_keywords', NOW())";
+$update_products = "UPDATE products SET clothtype_id='$product_cloth_type', season_id='$product_season', products_title='$product_title', product_description='$product_description',product_price='$sales_price', product_uses='$product_uses', product_keywords='$product_keywords', product_img1='$product_img1', product_img2='$product_img2', product_img3='$product_img3', create_at=NOW() WHERE products_id ='$update_pro_id'";
 
 
-		$run_productInsertion = mysqli_query($connection, $insert_products);
+		$run_productUpdate = mysqli_query($connection, $update_products);
  
-		 if($run_productInsertion)
+		 if($run_productUpdate)
 		 {
-            echo "<script> alert('Inserted Sucsefully!!') </script>";
+            echo "<script> alert('Product Updated Sucsefully!!') </script>";
+            echo "<script>window.open('index.php?viweProducts','_self') </script>";
                
          }else {die(mysqli_error($connection));}
 

@@ -1,18 +1,11 @@
-<?php
-  include("./includes/PhpDBConnect.php"); 
-  include("./functions/indexFunction.php");
-        
-?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUTWALA</title>
-  
-  <!-- Favicon  -->
-    <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
-    
+   
     <!-- custom css link -->
     <link rel="stylesheet" href="./styles/mainstyle.css">
     <link rel="stylesheet" href="./styles/crox.css">

@@ -3,7 +3,7 @@
     <div class="mobile-bottom-navigation">
 
       <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon class="fa-sharp fa-solid fa-bars" name="menu-outline"></ion-icon>
+        <ion-icon id="menuBar" class="fa-sharp fa-solid fa-bars" name="menu-outline"></ion-icon>
         <!-- <i class="fa-sharp fa-solid fa-bars" name="menu-outline"></i> -->
       </button>
  
@@ -30,7 +30,7 @@
 
     <!--  -->
 
-    <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
+    <nav id="mobile-nav" class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
 
       <div class="menu-top">
         <h2 class="menu-title">Menu</h2>
@@ -41,7 +41,7 @@
         </button>
       </div>
 
-      <ul class="mobile-menu-category-list">
+      <ul id="mobileNavUL" class="mobile-menu-category-list">
 
         <li class="menu-category">
           <a href="#" class="menu-title">Home</a>
@@ -178,3 +178,16 @@
       </div>
 
     </nav>
+
+    <script>
+        const mobileMenuBar = document.getElementById('menuBar');
+        const mobileNavUl = document.getElementById('mobileNavUL');
+
+        if(mobileMenuBar){
+          mobileMenuBar.addEventListener('click', () =>{
+            mobileNavUl.classList.add('active');
+          });
+        }
+
+
+    </script>

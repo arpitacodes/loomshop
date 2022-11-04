@@ -710,3 +710,135 @@ function getHouse() {
 
   </div>
   <!-- product_form div Ends -->
+
+
+/****
+
+TOO MUCH OLD PAGE
+   * * HTML PAGE FOR BASIC CODE OF PHP like(DATABASE-CONNECTION, TABLE-Connect)ETC.
+   * 
+   * index.php*
+   * */
+
+   /*
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loom's Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="./styles/index.css" media="all" />
+
+</head>
+<body>
+    <!--    - HEADER  -->
+
+      <header>
+        <div class="welcome-wrapper">
+          
+          <div class="welcome">
+            <p>Hello There!!
+              <b>Welcome</b>
+              on this site
+            </p>
+          </div>
+
+        </div>
+
+<!-- NAVIGATION AREA -->        
+        <nav>
+
+          <div class="nav-wrapper">
+          
+          <div class="logo-div">
+            <a href="#index.php" class="logo">
+              <img src="./images/logo3.PNG" alt="SiteLogo" width="150" height="40" style="margin-left: 15px;" >
+            </a>
+          </div>  
+
+          <div class="main_nav">
+            <ul>
+              <li class="drop-list">
+                <a href="#">Home</a>
+              </li>
+
+              <li class="drop-list1">
+                <a href="#">Category</a>
+
+                <div class="cat_main_list">
+
+                  <ul class="cat_lists">
+                  
+<?php
+    $get_categories = "SELECT * FROM categories";
+    $run_categories = mysqli_query($connection, $get_categories);
+
+      while ($row_categories = mysqli_fetch_array($run_categories)) 
+      {                        // code...
+
+          $category_id = $row_categories['category_id'];
+          $category_womans = $row_categories['womens'];
+          $category_mans = $row_categories['mans'];
+          $category_kides = $row_categories['kides'];
+          $category_house = $row_categories['house'];
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_womans </a></li>";
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_mans </a></li>";
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_kides </a> </li>";
+                echo "<li class='drop-sublist'><a href='index.php?categori=$category_id'>$category_house </a></li>";
+
+      }
+?> 
+                  <!--  <li class="drop-sublist">
+                      <a href="#lists">Women's</a>
+                    </li>
+                    <li class="drop-sublist">
+                      <a href="#lists">Man's</a>
+                    </li>
+                    <li class="drop-sublist">
+                      <a href="#lists">kide's</a>
+                    </li>
+                    <li class="drop-sublist">
+                      <a href="#lists">Home</a>
+                    </li> -->
+                     
+                  </ul>
+                </div>
+              </li> 
+
+              <li class="drop-list">
+                <a href="#">Blog</a>
+              </li>
+              <li class="drop-list">
+                <a href="#">About Us</a>
+              </li>
+            </ul>
+          </div>
+
+          </div>
+
+          <div class="icon_wrapper">
+            
+            <div class="user_icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="cart_icon">
+              <!--  <i class="fas fa-trash"></i> -->
+              <i class="fas fa-cart-shopping"></i>
+            </div>
+
+          </div> 
+
+        </nav>
+        
+      </header>
+
+
+</body>
+</html>
+*/

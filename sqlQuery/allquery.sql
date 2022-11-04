@@ -25,9 +25,9 @@ ALTER TABLE
 
 
 /*$sql
-    = "INSERT INTO 'products` (`product_id`, `category_id`, `product_title`, `product_description`, 
-    `product_price`, `product_status`, `product_img1`, `product_img2`, `product_img3`, 
-    `prodct_thread_type`, `product_feature`, `product_keywords`, `made_in`, `create_at`) 
+    = "INSERT INTO 'products (product_id, category_id, product_title, product_description, 
+    product_price, product_status, product_img1, product_img2, product_img3, 
+    prodct_thread_type, product_feature, product_keywords, made_in, create_at) 
     VALUES (NULL, \'1\', \'demo product one \', \'demo product one demo product onedemo product 
     onedemo product onedemo product onedemo product one\', \'125.22\', \'1\', \'\', \'\', \'\',
     \'Silk\', \'demo product one demo product onedemo product onedemo product onedemo product onedemo 
@@ -66,4 +66,34 @@ CREATE TABLE season(
     ADD product-img2 TEXT NOT NULL AFTER product-img1,
     ADD product-img3 TEXT NOT NULL AFTER product-img2;
 
+
+
+CREATE TABLE sutshop.customers(
+    customer_id INT NOT NULL AUTO_INCREMENT,
+    customer_name VARCHAR(50) NOT NULL,
+    customer_email VARCHAR(80) NOT NULL,
+    customer_password VARCHAR(60) NOT NULL,
+    customer_city VARCHAR(70) NOT NULL,
+    customer_contact INT(20) NOT NULL,
+    customer_address VARCHAR(80) NOT NULL,
+    PRIMARY KEY(customer_id)
+) ENGINE = INNODB;
+
+CREATE TABLE sutshop.customer_orders(
+    order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    due_amount FLOAT(10, 3) NOT NULL,
+    invoice_no INT(100) NOT NULL,
+    total_products INT(100) NOT NULL,
+    order_date TIMESTAMP NOT NULL,
+    order_status BOOLEAN NOT NULL
+) ENGINE = INNODB;
+
+CREATE TABLE sutshop.pending_order(
+    customer_id INT NOT NULL,
+    invoice_no INT(100) NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    order_status BOOLEAN NOT NULL
+) ENGINE = INNODB;
 

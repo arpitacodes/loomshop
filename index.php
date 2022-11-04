@@ -1,4 +1,5 @@
 <?php
+@session_start();
    include("./pages/head.php");
    include("./pages/header.php");
              
@@ -22,7 +23,7 @@
 
       </div>
       <!-- products wrapper endding point -->
-<h1>All Season fields</h1>
+<!-- <h1>All Season fields</h1>
       <?php 
         $select = "SELECT * FROM season";//WHERE season_id = 3
 
@@ -48,7 +49,7 @@
       </div>
     </form>
   </div>
-        <?php 
+        < ? php 
              if (isset($_POST['submit'])) 
             {
                 
@@ -65,12 +66,12 @@
             
                                 
           }
-        ?>
+        ?> -->
 
 
     
 
-<a href="./thankyou.php" > Thank you </a>
+<!-- <a href="./thankyou.php" > Thank you </a> -->
 
 
   </main>
@@ -84,3 +85,75 @@
     include("./pages/footer.php");
 
 ?>
+
+ <style>
+
+
+  .product_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10%;
+    margin-left: 4%;
+  }
+
+  .single_product{
+     flex: 0 1 calc(18% - 1em);
+     padding-left: 15px;
+     margin-bottom: 2%;
+  }
+
+.ProductImage{padding-bottom: 5px;}
+
+.product_head3 {
+    width: 10rem;
+    height: 15%;
+    text-transform: uppercase;
+}
+
+.img_a > a, button {
+    color: #2a5104;
+    font-size: 12px;
+    text-transform: uppercase;
+  
+}
+.img_a>a:hover {color: var(--salmon-pink);}
+.img_a > a button:hover {color: var(--salmon-pink);}
+
+</style> 
+
+
+ 
+<!-- <style>
+/*
+@media screen and (min-width: 40em) {
+    .product_wrapper {
+        margin-top: 10%;
+        //justify-content: space-between;/
+          display: flex;
+    }
+    
+    .single_product {
+      ///  -webkit-flex: 0 1  calc(33% - .2em);
+            -ms-flex: 0 1  calc(33% - .2em);//
+                flex: 0 1  calc(40% - 0em);
+        margin-bottom: 2em;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+@media screen and (min-width: 100em) {
+    .product_wrapper {
+        margin-top: 10%;
+        //justify-content: space-between;
+          display: flex;
+    }
+    
+    .single_product {
+      /// -webkit-flex: 0 1  calc(33% - .2em);
+         //   -ms-flex: 0 1  calc(33% - 0em);
+                flex: 0 3  calc(10% - 0em);
+        margin-bottom: 2em;
+        margin-right: 3px;
+    }
+}*/
+</style> -->

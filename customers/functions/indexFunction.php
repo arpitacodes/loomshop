@@ -1,5 +1,4 @@
 <?php 
-  @session_start();
 	$connection = mysqli_connect("localhost","root","","sutshop");
 
 
@@ -21,77 +20,6 @@ function get_client_ip() {
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-
-
-///To get default details of order(s) for customer (their account)
-
-function getDefaultDetails(){
-
-  global $connection;
- 
-            $c = $_SESSION['customer_email'];
-
-            $get_c = "SELECT * FROM customers WHERE customer_email='$c'";
-
-            $run_c = mysqli_query($connection,$get_c);
-
-            $row_c = mysqli_fetch_array($run_c);
-
-            $customer_id = $row_c['customer_id'];
-
- if(!isset($_GET['viweProfileOrder'])){
-    if(!isset($_GET['edit_account'])) {
-      if(!isset($_GET['delete_cust_account'])){
-        if(!isset($_GET['chenge_password'])){
-
-
-  $get_orders =
-   "SELECT * FROM customer_orders WHERE customer_id ='$customer_id' AND order_status = 'Pending'";
-
-          $run_orders = mysqli_query($connection, $get_orders);
-
-          $count_orders=mysqli_fetch_array($run_orders);
-
-///error in counting($count_orders)
-          if($count_orders > 0){
-
-            echo "
-                <div style='padding:10px; margin-top:5%;'>
-                <h2 style='color: #FFF;'>Important!!</h2><br>
-                <h3 style='color: #FFF;'>You have ($count_orders) Pending Orders...</h3><br>
-                <h4 style='color: #FFF;'>Please see your orders details by clicking this 
-                  <a href='myAccount.php?viweProfileOrder' style='color:#55570b;'> Link</a>
-                </h4> <br>
-                <h4 style='color: #FFF; display: inline-flex;'>
-                  Or you can <a href='payOffline.php' style='color:#55570b;'>Offline</a>
-                </h4><br>
-                
-
-                </div>
-            ";
-          }
-          else{
-             echo "
-                <div style='padding:10px; margin-top:5%;'>
-                <h2 style='color: #FFF;'>Important!!</h2><br>
-                <h3 style='color: #FFF;'>You have no Pending Orders...</h3><br>
-                <h4 style='color: #FFF; '>You can check your orders hestory By clicking this <a href='myAccount.php?viweProfileOrder' style='color:#55570b;'> Link</a>
-                </h4><br>
-
-                </div>
-            ";
-          }
-
-
-          }
-        }
-      }
-  }
-
-}
-
-
-
 /// To add cart
 
 function insertIntoCart(){
@@ -172,7 +100,7 @@ function getTotalPrice()
 
         $product_price=array($pro_price['product_price']);//check into table of products
         $values=array_sum($product_price);
-        (float)$totalprice +=$values;
+        $totalprice +=$values;
 
       }
     }
@@ -262,7 +190,7 @@ function getSeasons(){
 
                   <h3 class='product_head3'>$product_title</h3>
 
-                  <img class='ProductImage' src='./admins_area/products_images/$product_img' width='190' height='180' /> 
+                  <img class='ProductImage' src='./admins_area/products_images/$product_img' width='170' height='180' /> 
                   
                   <p><b>Price: $product_price Rs./INR </b></p>
 
