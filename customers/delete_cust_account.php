@@ -15,6 +15,14 @@
 		margin: 1px 5px 3px 5px;
 	}
 
+	@media screen and (max-width: 60em){ 
+		.wrapper {    margin: 10%;}
+		h4{font-size: 14px; font-weight: bold;}
+		input[type="submit"] { width: 18%;}
+
+
+	}
+
 </style>
 </head>
 <body>

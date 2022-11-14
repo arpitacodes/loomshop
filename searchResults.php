@@ -67,8 +67,8 @@
 
 
     
-
-<a href="./thankyou.php" > Thank you </a>
+<!-- 
+<a href="./thankyou.php" > Thank you </a> -->
 
 
   </main>
@@ -81,51 +81,3 @@
     include("./pages/footer.php");
 
 ?>
-
-<!-- <style>
-  main{
-    width: 100%;
-    height: auto;
-  }
-
-
-  .product_wrapper {
-    width: 100%;
-    height: auto;   
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin-top: 10%;
-    /*gap: 10px;*/
-  }
-
-  .single_product{
-    width: 15%;
-    height: 60%;
-    border: none;
-    border-radius: 4px;
-    margin-bottom: 3%;
-    box-shadow: 0 0 10px hsl(0deg 0% 0% / 25%);
-    padding: 6px 3px;
-    margin-left: 15px;
-
-    
-  }
-  .ProductImage{padding-bottom: 5px;}
-
-.product_head3 {
-    width: 10rem;
-    height: 15%;
-    text-transform: uppercase;
-}
-
-.img_a > a, button {
-    color: #2a5104;
-    font-size: 12px;
-    text-transform: uppercase;
-  
-}
-.img_a>a:hover {color: var(--salmon-pink);}
-.img_a > a button:hover {color: var(--salmon-pink);}
-
-</style> -->

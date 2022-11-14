@@ -1,3 +1,10 @@
+<?php 
+	if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+?>
 <style>
 	.p_val{
 		padding: 5px;
@@ -10,6 +17,7 @@
 	}
 	th{
 		border-bottom: 2px ridge;
+		padding: 5px;0
 	}
 	tr, td {
     border-right: 2px solid #60229d;
@@ -19,7 +27,10 @@
 <main>
 	
 <table>
-	<div class="viwe_wrapper">
+	<div class="view_wrapper">
+		<tr>
+			<td colspan="7" style="border: 2px solid #60229d;"><h2>view All Customers</h2></td>
+		</tr>
 		
 			<tr>
 				<th>S. No.</th>
@@ -34,7 +45,7 @@
 
 <?php 
 
-	 include_once("./includes/adminDBconnect.php"); 
+	include_once("../includes/PhpDBConnect.php"); 
 
 	$get_customer = "SELECT * FROM customers";
 
@@ -79,4 +90,5 @@
 </table>
 </main>
 
+<?php } ?>
 

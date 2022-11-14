@@ -14,13 +14,15 @@
     font-size: 18px;
 	}
 
-	.payment_wrapper>b, a{
+	b, a{
 		display: inline-block;
 	}
-	.payment_wrapper img:hover{
+	 img:hover{
 		box-shadow: 0 5px 4px #123;
-		/*6px 8px 8px #2b5f93;*/
+		
 	}
+	input{width: 13rem;}
+	    form {text-align: -webkit-center;}
 button:hover{ border-bottom: 1px solid var(--cultured); }
 </style>
 </head>
@@ -48,7 +50,28 @@ button:hover{ border-bottom: 1px solid var(--cultured); }
 
 		?>
 
-	<b>Pay with</b> &nbsp; <a href="https://www.paypal.com"><img src="./images/paypal.PNG" alt="PayPal Image"></a> &nbsp; <b>or <a href= "customerOrder.php?c_id= <?php echo $customer_id;?>">Pay Offline</a></b><br><br>
+	<b>Pay with</b> &nbsp; </b><br>
+		<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> 
+			<input type="hidden" name="cmd" value="_cart"> 
+			<input type="hidden" name="business" value="seller@designerfotos.com"> 
+			<input type="hidden" name="item_name" value="hat"> 
+			<input type="hidden" name="item_number" value="123"> 
+			<input type="hidden" name="amount" value="15.00"> 
+			<input type="hidden" name="first_name" value="John"> 
+			<input type="hidden" name="last_name" value="Doe"> 
+			<input type="hidden" name="address1" value="9 Elm Street"> 
+			<input type="hidden" name="address2" value="Apt 5"> 
+			<input type="hidden" name="city" value="Berwyn"> 
+			<input type="hidden" name="state" value="PA"> 
+			<input type="hidden" name="zip" value="19312"> 
+			<input type="hidden" name="night_phone_a" value="610"> 
+			<input type="hidden" name="night_phone_b" value="555"> 
+			<input type="hidden" name="night_phone_c" value="1234"> 
+			<input type="hidden" name="email" value="jdoe@zyzzyu.com"> 
+			<input type="image" name="submit" src="./images/paypal.PNG" alt="PayPal - The safer, easier way to pay online" > 
+		</form>
+
+	 &nbsp; <span><b>or <a href= "customerOrder.php?c_id= <?php echo $customer_id;?>">Pay Offline</a></span> </b><br><br>
 	<b>If you selected, with offline payment, then please check your email account to get the invoice number!!</b>
 	<br>
 </div>

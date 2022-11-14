@@ -1,3 +1,11 @@
+<?php 
+	if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +36,11 @@
 	<main>
 		
 		<div class="Acts_seasons">
-			
+
 			<table>
+				<tr>
+					<td colspan="7" style="border: 2px solid #60229d;"><h2>viwe All Seasons</h2></td>
+				</tr>
 				<tr>
 					<th>Season Id</th>
 					<th>Season Name</th>
@@ -41,7 +52,7 @@
 
 				<?php 
 
-				   include ("includes/adminDBconnect.php");
+				   include_once("../includes/PhpDBConnect.php"); 
 
 				   $get_seasons = "SELECT * FROM season";
 
@@ -74,3 +85,5 @@
 
 </body>
 </html>
+
+<?php } ?>

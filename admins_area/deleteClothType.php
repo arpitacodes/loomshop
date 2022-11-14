@@ -1,6 +1,10 @@
 <?php 
-	include_once("./includes/adminDBconnect.php");  
+if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
 
+	include_once("../includes/PhpDBConnect.php"); 
 	if(isset($_GET['deleteClothType'])){
 
 		$cloth_type_id = $_GET['deleteClothType'];
@@ -12,8 +16,10 @@
 		if($run_delete_cloth_type){
 			echo "<script> alert('One Cloths Type has been Deleted..!!') </script>";
 
-			 echo "<script>window.open('index.php?viweCloths','_self') </script>";
+			 echo "<script>window.open('index.php?viewCloths','_self') </script>";
 		}
 	}
 
 ?>
+
+<?php } ?>

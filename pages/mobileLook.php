@@ -1,64 +1,63 @@
 <!-- mobile bottom button navigation -->
 
-    <div class="mobile-bottom-navigation">
+    <div id="iconDiv" class="mobile-bottom-navigation">
 
-      <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon id="menuBar" class="fa-sharp fa-solid fa-bars" name="menu-outline"></ion-icon>
-        <!-- <i class="fa-sharp fa-solid fa-bars" name="menu-outline"></i> -->
+      <button class="action-btn">
+        <i id="menuBar" class="fa-sharp fa-solid fa-bars" name="menu-outline"></i>      
       </button>
  
 
-      <button class="action-btn">
-        <!-- <i class="fas fa-home"></i> -->
-        <ion-icon  class="fas fa-home" name="home-outline"></ion-icon>
+      <button class="action-btn">        
+        <a href="index.php"><i  class="fas fa-home" name="home-outline"></i></a>
       </button>
 
-      <button class="action-btn">
-        <!-- <i class="fas fa-cart-shopping" name="bag-handle-outline" ></i> -->
-        <!-- <i class="fa-sharp fa-solid fa-bag-shopping" name="bag-handle-outline"></i> -->
-        <ion-icon class="fa-sharp fa-solid fa-bag-shopping" name="bag-handle-outline" ></ion-icon>
-        <span class="count">0</span>
+      <button class="action-btn">        
+        <a href="cart.php"> 
+          <i class="fa-sharp fa-solid fa-bag-shopping" name="bag-handle-outline" ></i>
+        </a>
+       <span class="count">
+            <?php   getItems();    ?>                  
+        </span>
       </button>
 
       <button class="action-btn" data-mobile-menu-open-btn>
-        <!-- <i class="fa-solid fa-border-all"></i>  user icon for login-->
-        <ion-icon class="fa-solid fa-border-all" name="grid-outline"></ion-icon>
+        <a href="./customers/myAccount.php">           
+            <i class="fa-solid fa-user" name="person-outline"></i>
+        </a> 
       </button>
 
     </div>
 
 
-    <!--  -->
+    <nav id="mobile-nav" class="mobile-navigation-menu  has-scrollbar" >
 
-    <nav id="mobile-nav" class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
-
-      <div class="menu-top">
+      <div id="menuWrapper" class="menu-top">
         <h2 class="menu-title">Menu</h2>
 
-        <button class="menu-close-btn" data-mobile-menu-close-btn>
-          <ion-icon class="fa-solid fa-xmark" name="close-outline"></ion-icon>
-          <!-- <i class="fa-solid fa-xmark"  name="close-outline"></i> -->
+        <button class="menu-close-btn" >
+          <i id="closeBtn" class="fa-solid fa-xmark" name="close-outline"></i>
+          
         </button>
       </div>
 
       <ul id="mobileNavUL" class="mobile-menu-category-list">
 
         <li class="menu-category">
-          <a href="#" class="menu-title">Home</a>
+          <a href="index.php" class="menu-title">Home</a>
         </li>
 
         <li class="menu-category">
 
-          <button class="accordion-menu" data-accordion-btn>
+          <button class="accordion-menu" >
             <p class="menu-title">Cloths Types</p>
 
             <div>
-              <ion-icon class="fa-regular fa-plus" name="add-outline" class="add-icon"></ion-icon>                
-              <ion-icon class="fa-solid fa-minus" name="remoe-outline" class="remove-icon"></ion-icon>
+              <i class="fa-regular fa-plus" name="add-outline" class="add-icon"></i>                
+              <i class="fa-solid fa-minus" name="remoe-outline" class="remove-icon"></i>
             </div>
           </button>
 
-          <ul class="submenu-category-list" data-accordion>
+          <ul class="submenu-category-list" >
             <?php getClothtypes(); ?> 
           </ul>
 
@@ -66,16 +65,16 @@
 
         <li class="menu-category">
 
-          <button class="accordion-menu" data-accordion-btn>
+          <button class="accordion-menu" >
             <p class="menu-title">Season</p>
 
             <div>
-              <ion-icon class="fa-regular fa-plus" name="add-outline" class="add-icon"></ion-icon>                
-              <ion-icon class="fa-solid fa-minus" name="remoe-outline" class="remove-icon"></ion-icon>
+              <i class="fa-regular fa-plus" name="add-outline" class="add-icon"></i>                
+              <i class="fa-solid fa-minus" name="remoe-outline" class="remove-icon"></i>
             </div>
           </button>
 
-          <ul class="submenu-category-list" data-accordion>
+          <ul class="submenu-category-list" >
 
             <?php  getSeasons(); ?>
 
@@ -86,108 +85,63 @@
         <li class="menu-category">
           <a href="#" class="menu-title">Blog</a>
         </li>
-<!-- This is Offer categories  -->
-         <li class="menu-category">
-            <a href="#adnim_panel.php" class="menu-title">Becoms a Saler</a>
-          </li>
 <!-- This is Contact Us categories  -->
            <li class="menu-category">
             <a href="#contact_us.php" class="menu-title">Contact Us</a>
           </li>
+           <li class="menu-category">
+            <a href="#customerLogout.php" class="menu-title">Logout</a>
+          </li>
 
       </ul>
 
-      <div class="menu-bottom">
-
-        <ul class="menu-category-list">
-
-          <li class="menu-category">
-
-            <button class="accordion-menu" data-accordion-btn>
-              <p class="menu-title">Language</p>
-
-              <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
-            </button>
-
-            <ul class="submenu-category-list" data-accordion>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">English</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">Espa&ntilde;ol</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">Fren&ccedil;h</a>
-              </li>
-
-            </ul>
-
-          </li>
-
-          <li class="menu-category">
-            <button class="accordion-menu" data-accordion-btn>
-              <p class="menu-title">Currency</p>
-              <ion-icon name="caret-back-outline" class="a-solid fa-caret-left"></ion-icon>
-              <!-- <i class="fa-solid fa-caret-left" name="caret-back-outline"></i> -->
-            </button>
-
-            <ul class="submenu-category-list" data-accordion>
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">USD &dollar;</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">EUR &euro;</a>
-              </li>
-            </ul>
-          </li>
-
-        </ul>
-
-        <ul class="menu-social-container">
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon class="fa-brands fa-facebook" name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon class="fa-brands fa-twitter" name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon class="fa-brands fa-instagram" name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon class="fa-brands fa-linkedin" name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
+      
     </nav>
 
-    <script>
-        const mobileMenuBar = document.getElementById('menuBar');
-        const mobileNavUl = document.getElementById('mobileNavUL');
+<style>
 
-        if(mobileMenuBar){
-          mobileMenuBar.addEventListener('click', () =>{
-            mobileNavUl.classList.add('active');
-          });
-        }
+  #menuWrapper{
+    display: none;
+  }
 
+  @media (max-width: 799px){
+    #mobile-nav{
+      display: contents;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: fixed;
+      top: 0;
+      left: -300;
+      height: 100vh;
+      width: 300px;
+      background-color: #fefefe;
+      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+      padding: 80px 0 0 10px;
+      transition: 0.3s;
 
-    </script>
+    }
+    #mobile-nav.active{
+      left: 0;
+    }
+
+    #menuWrapper{
+    display: flex;
+    }
+
+    #menuWrapper i{
+      color: #123;
+      font-size: 20px;
+    }
+   #menuWrapper .menu-title{
+    clear: #123;
+    font-size: 24px;
+  }
+}
+    .mobile-navigation-menu{
+
+    }
+
+</style>
+
+<script src="./js/mobile.js"></script>

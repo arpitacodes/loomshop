@@ -4,23 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	
 	<style>
 		form{
-			margin: 10%;
+			margin: 3%;
 		}
 		label{margin: 0 15px 0 0;font-weight: bold;
 			font-size: 16px;		}
 		input[type="text"]{
-			margin: 10px;
+			margin: 7px;
 			font-weight: bold;
-			font-size: 16px;
+			font-size: 14px;
 		}
 		input[type="submit"]{ padding: 5px; border-radius: 5px; }
+		h2{color: slategrey;}
 	</style>
 
 </head>
 <body>
-	<center>
+	
+		<h2>Insert New Season Name</h2>
 	<form action="" method="POST">
 			
 		<div class="season_wrapper">
@@ -33,11 +36,11 @@
 		</div>
 
 	</form>
-	</center>
+	
 	
 
 	<?php 
-		include("includes/adminDBconnect.php");
+	   include_once("../includes/PhpDBConnect.php"); 
 
 		if(isset($_POST['addNewSeasonName'])){
 

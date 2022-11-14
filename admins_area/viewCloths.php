@@ -1,3 +1,10 @@
+<?php 
+	if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +48,7 @@
 
 				<?php 
 
-				   include ("includes/adminDBconnect.php");
+				  include_once("../includes/PhpDBConnect.php"); 
 
 				   $get_clothtypes = "SELECT * FROM clothtypes";
 
@@ -74,3 +81,5 @@
 
 </body>
 </html>
+
+<?php } ?>

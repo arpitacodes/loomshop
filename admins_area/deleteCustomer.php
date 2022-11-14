@@ -1,5 +1,10 @@
 <?php 
-	include_once("./includes/adminDBconnect.php");  
+if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+ include_once("../includes/PhpDBConnect.php"); 
 
 	if(isset($_GET['deleteCustomer'])){
 
@@ -12,8 +17,10 @@
 		if($run_customer){
 			echo "<script> alert('Customer has been Deleted..!!') </script>";
 
-			 echo "<script>window.open('index.php?viweCustomer','_self') </script>";
+			 echo "<script>window.open('index.php?viewCustomer','_self') </script>";
 		}
 	}
 
 ?>
+
+<?php } ?>

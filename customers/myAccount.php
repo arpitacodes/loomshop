@@ -1,7 +1,8 @@
 <?php
   @session_start();
 	include_once("../functions/indexFunction.php");
- ?>
+
+?>
 <head>
     <!-- custom css link -->
     <link rel="stylesheet" href="../styles/mainstyle.css">
@@ -23,75 +24,107 @@
     font: inherit;
     border: none;
     background: none;
-}
-.search-btn > input[type="submit"]:hover { color: var(--salmon-pink); }
+    }
+    .search-btn > input[type="submit"]:hover { color: var(--salmon-pink); }
 
-.checkout{
-  display: none;
-}
-  /**********customer Profile Styles****************/ 
+    .checkout{
+      display: none;
+    }
 
-.profile_wrapper{
-  padding: 20px;
-  font-size: 18px;
-  margin: 2rem;
-  background-color: blueviolet;
-}
+  
+      /**********customer Profile Styles****************/ 
 
-.cust_image{height: 25vh;}
+    .profile_wrapper{
+      padding: 20px;
+      font-size: 18px;
+      background-color: #b4b2b124;
+     }
 
-.customer_profile{
-    width: 6.4rem;
-    height: 6.4rem;
-    margin: 2rem;
-    border-radius: 3px;
-    border: 2px solid #123;
-    padding: 3px;
-}
-.profile_inner_wrapper{
-  display: flex;
-  justify-content: center;
+    .cust_image{height: 18vh;}
 
-}
-.left_side_bar{
-  background-color: aqua;
-    height: 100vh;
-    border-top: 2px solid #11223354;
-}
+    .customer_profile{
+        width: 6.4rem;
+        height: 6.4rem;
+        margin: 1rem;
+        border-radius: 3px;
+        border: 2px solid #123;
+        padding: 3px;
+    }
+    .profile_inner_wrapper{
+      display: flex;
+      justify-content: center;
 
-.links{
- margin-top: 2rem;
+    }
+    .left_side_bar{
+      height: 100vh;
+      border-bottom: 2px solid #11223354;
+      border-top: 2px solid #11223354;
+      border-left: 2px solid #11223354;
+    }
 
-}
-li.profile-pic{ background: aliceblue; padding: 5px; border: 1px solid #dea;} 
-li.viwe{ background: aliceblue; padding: 5px; border: 1px solid #dea;}
- li.edit_account{ background: aliceblue; padding: 5px; border: 1px solid #dea;}
- li.chenge_password{ background: aliceblue; padding: 5px; border: 1px solid #dea;}
-li.delete{background: aliceblue; padding: 5px; border: 1px solid #dea;
-}
-.links_a {padding: 6px;}
+    .links{
+     margin-top: 2rem;
+
+    }
+    li.profile-pic{ background: aliceblue; padding: 5px; border: 1px solid #dea;} 
+    li.viwe{ background: aliceblue; padding: 5px; border: 1px solid #dea;}
+     li.edit_account{ background: aliceblue; padding: 5px; border: 1px solid #dea;}
+     li.chenge_password{ background: aliceblue; padding: 5px; border: 1px solid #dea;}
+    li.delete{background: aliceblue; padding: 5px; border: 1px solid #dea;
+    }
+    .links_a {padding: 6px;}
 
 
-.right_side_bar {
-    background: chocolate;
-    border: 2px solid #11223354;
-    width: 130vh;
-   
-}
-h1, h2, h3, a{display: inline;}
-.welcome_cust{
-    padding: 20px;
-    border-bottom: 2px solid #11223354;
-    text-align: center;
-}
-
-.details{
+    .right_side_bar {
+        border: 2px solid #11223354;
+        width: 130vh;
+       
+    }
+    h1, h2, h3, a{display: inline;}
+    .welcome_cust{
+        padding: 20px;
+        text-align: center;
+    }
+    header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    background-color: #fff;
   }
+  /*@media screen and (max-width: 60em){header{height: 8rem}}*/
+
+    /*MEADIYA */
+
+    @media screen and (max-width: 60em){
+      .profile_inner_wrapper {  
+        display: block;
+        }
+        
+      .left_side_bar {
+        height: auto;
+        text-align: -webkit-center;
+        border-bottom: none;
+        border-right: 2px solid #11223354;
+       }
+      .links {
+
+      }
+      li.viwe {
+   
+      }
+
+      .right_side_bar {
+        width: auto;
+      }
+      tr {
+          font-size: 12px;
+      }
+    }
+
 </style>
 </head>
-
-
-
 
 <header>
 
@@ -184,7 +217,7 @@ h1, h2, h3, a{display: inline;}
           <li class="menu-category">
             <a href="#clothCategory.php" class="menu-title">Categories</a>
 
-            <div class="dropdown-panel" style="left: unset;right: 33%; top:110%;">
+            <div class="dropdown-panel" style="left: unset; top:33;">
 
               <ul class="dropdown-panel-list">
 
@@ -208,15 +241,11 @@ h1, h2, h3, a{display: inline;}
 
 <!-- This is Blog categories  -->
           <li class="menu-category">
-            <a href="#" class="menu-title">Blog</a>
-          </li>
-<!-- This is Offer categories  -->
-          <li class="menu-category">
-            <a href="#adnim_panel.php" class="menu-title">Becoms a Saler</a>
+            <a href="../allBlog.php" class="menu-title">Blog</a>
           </li>
 <!-- This is Contact Us categories  -->
            <li class="menu-category">
-            <a href="#contact_us.php" class="menu-title">Contact Us</a>
+            <a href="../pages/contact_us.php" class="menu-title">Contact Us</a>
           </li>
         </ul>
 
@@ -224,15 +253,44 @@ h1, h2, h3, a{display: inline;}
 
     </nav>
 </div>    
+ <?php
+        include("mobileLook.php");
+?> 
+</header>
 
-
-
-  </header>
 
 
 <main>
   
       <div class="profile_wrapper">
+         <div class="welcome_cust">
+                  
+                <!-- <h3>WELCOME THERE</h3>  -->
+            <?php    
+
+           /*  if(!isset($_SESSION['customer_email'])){
+              echo "<p>Hello There!! <b>Welcome</b> on this site</p> ";
+            }
+            else{
+              echo "<b>Welcome!! </b><p style='display: inline-block;'>". $_SESSION['customer_email'] ."</p>";
+            }  */     
+
+              $mail = $_SESSION['customer_email'];
+             //if(!isset($mail)){
+
+              $get_mail= "SELECT * FROM customers WHERE customer_email='$mail'";
+
+              $run_mail=mysqli_query($connection, $get_mail);
+
+              $row_mail =mysqli_fetch_array($run_mail);
+              $customer_id = $row_mail['customer_id'];
+              $customer_name = $row_mail['customer_name'];
+              echo "<b>Welcome!! </b>&nbsp;<h3 style='display: inline-block;'>".$customer_name ."</h3>";
+            //}
+          ?> 
+                </div>
+
+
 
         <!-- profile_inner_wrapper starts -->
         <div class="profile_inner_wrapper">
@@ -244,7 +302,6 @@ h1, h2, h3, a{display: inline;}
                 <?php
                   if(isset($_SESSION['customer_email'])){
                   $customer_session =$_SESSION['customer_email'];
-                  //$cutomer_name_session= $_SESSION['customer_name'];
 
  $get_customer_pic = "SELECT * FROM customers WHERE customer_email='$customer_session'";
                   
@@ -253,10 +310,12 @@ h1, h2, h3, a{display: inline;}
                   $row_customer=mysqli_fetch_array($run_customer);
 
                   $cutomer_pic =$row_customer['customer_Profile_img'];
+                  /*
+                  $cutomer_name_session= $row_customer['customer_name'];*/                 
 
 echo "<img src='customer_photos/$cutomer_pic' alt='Customer profile photo' class='customer_profile'>";
-echo "";
-
+/*echo $cutomer_name_session."<br/>";
+*/
               }
 
                 ?>
@@ -293,34 +352,7 @@ echo "";
     <!-- right_side_bar starts -->
             <div class="right_side_bar">
                 
-                <div class="welcome_cust">
-                  
-                <!-- <h3>WELCOME THERE</h3>  -->
-            <?php    
-
-           /*  if(!isset($_SESSION['customer_email'])){
-              echo "<p>Hello There!! <b>Welcome</b> on this site</p> ";
-            }
-            else{
-              echo "<b>Welcome!! </b><p style='display: inline-block;'>". $_SESSION['customer_email'] ."</p>";
-            }  */     
-
-              $mail = $_SESSION['customer_email'];
-             //if(!isset($mail)){
-
-              $get_mail= "SELECT * FROM customers WHERE customer_email='$mail'";
-
-              $run_mail=mysqli_query($connection, $get_mail);
-
-              $row_mail =mysqli_fetch_array($run_mail);
-              $customer_id = $row_mail['customer_id'];
-              $customer_name = $row_mail['customer_name'];
-              echo "<b>Welcome!! </b>&nbsp;<h3 style='display: inline-block;'>".$customer_name ."</h3>";
-            //}
-          ?> 
-                </div>
-
-
+               
                   <div class="details">
                     <?php 
                       getDefaultDetails();
@@ -354,3 +386,10 @@ echo "";
       </div>
 <!-- profile_wrapper Ends -->
 </main>
+
+
+<?php 
+  
+  include("../pages/footer.php");
+
+?>

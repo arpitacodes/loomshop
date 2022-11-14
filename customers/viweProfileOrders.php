@@ -1,6 +1,6 @@
 
 <?php 
-	include("../includes/PhpDBConnect.php");
+	include_once("../includes/PhpDBConnect.php");
 	
 	//to get the customer ID
 
@@ -15,8 +15,8 @@
 	$customer_id = $row_mail['customer_id'];
 ?>
 
-<table width="700" align="center" style="margin-top:10%; "> 
-	
+<table width="700" align="center" style="margin-top:2%; width: auto; "> 
+	<div class="viewOrdres"><h3>View Your Orders</h3></div>
 
 	<tr >
 		<th>Order No.&nbsp;</th>
@@ -72,4 +72,12 @@
 ?>
 
  </table>
+
+ <style>
+ 	.viewOrdres {
+	    text-align: center;
+	    padding: 1em;
+	    color: slategrey;
+	}		
+ </style>
  

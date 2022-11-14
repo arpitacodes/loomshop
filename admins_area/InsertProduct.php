@@ -1,25 +1,7 @@
 <?php
-  include_once("./includes/adminDBconnect.php");    
+ 		$form_complete = null; 
+  	include_once("../includes/PhpDBConnect.php");  
 
-  	$form_complete = null;
-  	$form_complete ?: true;
-  if($form_complete)
-  {
-  	foreach ($_POST as $key => $value) 
-  	{
-  		if('product_submit' != $key)
-  		{
-  			if (is_array($value)) 
-  			{
-  			$value = implode(', ', $value);
-  		    }
-  		
-  		echo "<p><b>". ucfirst($key). " is". "</b> is $value.</p>";
-  	    }
-    }
- }
-  
- 
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -85,21 +67,13 @@
 			border: none;
 			background: no-repeat;
 		}	
+		h2{color: slategrey;}
 
 	</style>
 
 </head>
 <body>
-    <?php  
-		if( isset( $_POST['product_title']) && empty( trim($_POST['product_title'])))
-		{
-		  echo "<p class=\"alert\"style='color:red; font-size:22px;'>Product Name is required</p>";
-		  exit;
-		}					  
-									 
-    ?>
-
-<center>
+ 
 <div class="product_form">
 <!-- //action="InsertProduct.php" -->
 <form  name="container" action="InsertProduct.php" method="POST"  enctype="multipart/form-data">
@@ -134,6 +108,10 @@
 	</div> 
 				
 	<div class="wrapper_label_input">
+		<?php
+        if(isset ($_POST['product_description']) && empty(trim ($_POST['product_description'])))
+        { echo "<p class=\'alert\'>Product's Description is required</p>";  }
+    ?>
 
 		<div class="label_aree">
 		   <label class="labless">Product's Description</label><br>
@@ -159,8 +137,26 @@
 		</div>
 
 	</div>
-				
+
 	<div class="wrapper_label_input">
+
+		<div class="label_aree">
+		   <label class="labless">Width</label><br> 
+		</div>
+
+		<div class="input_field">
+			<input type="text" id="Prod_width" name="product_width" required>
+		</div>
+
+	</div>			
+
+
+
+	<div class="wrapper_label_input">
+		<?php
+        if(isset ($_POST['product_uses']) && empty(trim ($_POST['product_uses'])))
+        { echo "<p class=\'alert\'>Product's Features/Uses is required</p>";  }
+    ?>
 
 		<div class="label_aree">
 			<label class="labless">Product's Features/Uses</label><br>
@@ -278,7 +274,7 @@ echo "<option class='panel-list-item' value='$season_id'>$season_name</option>";
 </form>
 </div>	
 
-</center>
+
 <!-- <a href="../thankyou.php" > Thank you </a> -->
 </body>
 </html>
@@ -302,6 +298,7 @@ echo "<option class='panel-list-item' value='$season_id'>$season_name</option>";
 		$product_keywords = $_REQUEST['product_keywords'];
 
 		$product_uses = $_REQUEST['product_uses'];
+		$product_width = $_REQUEST['product_width'];
 			
 		$status = 'on';
 
@@ -336,7 +333,7 @@ else {
 	move_uploaded_file($temp_name3, "./products_images/$product_img3");
 
 
-$insert_products = "INSERT INTO products (clothtype_id, season_id, products_title, product_description,product_price, product_status, product_img1, product_img2, product_img3, product_uses,product_keywords, create_at) VALUES('$product_cloth_type','$product_season','$product_title','$product_description', '$sales_price', '$status','$product_img1','$product_img2','$product_img3','$product_uses','$product_keywords', NOW())";
+$insert_products = "INSERT INTO products (clothtype_id, season_id, products_title, product_description,product_price, product_status, product_img1, product_img2, product_img3, product_uses,product_keywords, cloth_width, create_at) VALUES('$product_cloth_type','$product_season','$product_title','$product_description', '$sales_price', '$status','$product_img1','$product_img2','$product_img3','$product_uses','$product_keywords', '$product_width', NOW())";
 
 
 		$run_productInsertion = mysqli_query($connection, $insert_products);
@@ -351,7 +348,28 @@ $insert_products = "INSERT INTO products (clothtype_id, season_id, products_titl
 }
 	
 ?>
-	
+	<?php 
+  $form_complete ?: true;
+  if($form_complete){
+    foreach($_POST as $name => $value){
+      if('submit' != $name){
+        if(is_array($value)){
+          $value=implode(',', $value);
+        }
+        echo "<p><b>".ucfirst($name)."</b> is $value.</p>";
+      }
+    }
+  }
+
+  if(!empty($_POST)){
+    foreach($_POST as $value){
+      $value = trim($value);
+    }
+  }
+
+
+
+?>
 
  <!-- website link for text editore 
  

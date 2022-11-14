@@ -49,7 +49,6 @@ for (let i = 0; i < mobileMenuOpenBtn.length; i++) {
 }
 
 
-
 // accordion variables
 const accordionBtn = document.querySelectorAll('[data-accordion-btn]');
 const accordion = document.querySelectorAll('[data-accordion]');

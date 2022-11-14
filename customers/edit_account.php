@@ -1,8 +1,7 @@
 <?php 
 	@session_start();
-	include("../includes/PhpDBConnect.php");
-/*	include_once("./pages/head.php");
-   include_once("./pages/header.php");*/
+	include_once("../includes/PhpDBConnect.php");
+
 
 	if(isset($_GET['edit_account'])){
 
@@ -32,7 +31,7 @@
         
       <div class="edit_account">
 
-            <h2>Update Your Account</h2>
+            <div class="h2Update"><h2>Update Your Account</h2></div>
 
         <form action="" method="POST" enctype="multipart/form-data">
             
@@ -99,20 +98,18 @@
     .edit_account{
       padding: 10px;     
       font-size: 16px;
-      text-align: center;
-    }
-    .edit_account > h2{
-      text-align: center;
-      margin: 20px 0;
-      font-size: 35px;
       
+    }
+    .h2Update{
+      text-align: center;
+    padding: 1rem;     
     }
     .filed_wrapper{}
 
     label{
-     width: 31%;
-     text-align: end;
-     font-size: 20px;
+     width: 35%;
+     
+     color: #726d6d;
     }
     input[type='text']{
       width: 30%;
@@ -143,7 +140,35 @@
   .cust_contact {display: flex;  margin: 5px;} 
   .cust_add {display: flex;  margin: 5px;} 
   .cust_img{  display: flex;  gap: 10px; margin: 5px;}
-    .editBtn{ margin-left: 15rem; margin-bottom: 10px; }
+  .editBtn{ margin-left: 15rem; margin-bottom: 10px; }
+
+  @media screen and (max-width: 60em){ 
+  .cust_name {display: block;  }
+  .cust_mail {display: block;  }
+  .cust_pass {display: block;  }
+  .cust_pass2 {display: block;  } 
+  .cust_city {display: block;  } 
+  .cust_contact {display: block;  } 
+  .cust_add {display: block;  } 
+  .cust_img{  display: block;  }
+  .editBtn{ margin-left: 5rem;}
+  .cust_name, .cust_mail, .cust_pass, .cust_pass2, .cust_city, .cust_contact, .cust_add,.cust_img >label{text-align-last: center;}
+      label{
+         font-size: 17px;
+          padding: 5px
+       }
+        input[type=text],  input[type=password],  input[type=email]{
+           width: 100%;
+          font-size: smaller;
+          margin: 5px;
+        }
+        input[type="file"] {
+         width: auto;
+        margin: 5px;
+      }
+      .filed_wrapper {        margin-bottom: 1em;        }
+    
+  }
     
     
   </style>

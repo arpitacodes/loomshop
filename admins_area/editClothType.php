@@ -1,7 +1,10 @@
 <?php 
-		
-	include("includes/adminDBconnect.php");
+	if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
 
+	 include_once("../includes/PhpDBConnect.php"); 
 	if(isset($_GET['editClothType'])){
 
 		$cloth_type_id = $_GET['editClothType'];
@@ -74,10 +77,12 @@ if(isset($_POST['editCloth_types'])){
 		if($update_cloth_name){
 
 			echo "<script> alert('Cloth Types Name has been updated..! ') </script>";
-			echo "<script> window.open('index.php?viweCloths', '_self') </script>";
+			echo "<script> window.open('index.php?viewCloths', '_self') </script>";
 
 		}
 
 }
 		
 ?> 
+
+<?php } ?>

@@ -1,5 +1,11 @@
 <?php 
-	include_once("./includes/adminDBconnect.php");  
+
+if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{ 
+
+		 include_once("../includes/PhpDBConnect.php"); 
 
 	if(isset($_GET['deletProduct'])){
 
@@ -12,8 +18,10 @@
 		if($run_delete_product){
 			echo "<script> alert('One Product has been Deleted..!!') </script>";
 
-			 echo "<script>window.open('index.php?viweProducts','_self') </script>";
+			 echo "<script>window.open('index.php?viewProducts','_self') </script>";
 		}
 	}
 
 ?>
+
+<?php } ?>

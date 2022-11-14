@@ -1,3 +1,11 @@
+<?php 
+	if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,21 +14,23 @@
 	<title>Document</title>
 	<style>
 		form{
-			margin: 10%;
+			margin: 4%;
 		}
 		label{margin: 0 15px 0 0;font-weight: bold;
-			font-size: 16px;		}
+			font-size: 14px;		}
 		input[type="text"]{
 			margin: 10px;
 			font-weight: bold;
-			font-size: 16px;
+			font-size: 14px;
 		}
 		input[type="submit"]{ padding: 5px; border-radius: 5px; }
+		h2{color: slategrey;}
 	</style>
 
 </head>
 <body>
-	<center>
+	
+		<h2>Inser New Cloth Type Name </h2>
 	<form action="" method="POST">
 			
 		<div class="cloth_wrapper">
@@ -32,7 +42,7 @@
 		</div>
 
 	</form>
-	</center>
+	
 	
 
 	<?php 
@@ -52,3 +62,5 @@
 	?>
 </body>
 </html>
+
+<?php } ?>

@@ -50,19 +50,19 @@ function getDefaultDetails(){
 
           $run_orders = mysqli_query($connection, $get_orders);
 
-          $count_orders=mysqli_fetch_array($run_orders);
+          $count_orders=mysqli_num_rows($run_orders);
 
 ///error in counting($count_orders)
           if($count_orders > 0){
 
             echo "
                 <div style='padding:10px; margin-top:5%;'>
-                <h2 style='color: #FFF;'>Important!!</h2><br>
-                <h3 style='color: #FFF;'>You have ($count_orders) Pending Orders...</h3><br>
-                <h4 style='color: #FFF;'>Please see your orders details by clicking this 
+                <h2>Important!!</h2><br>
+                <h3>You have $count_orders Pending Orders...</h3><br>
+                <h4>Please see your orders details by clicking this 
                   <a href='myAccount.php?viweProfileOrder' style='color:#55570b;'> Link</a>
                 </h4> <br>
-                <h4 style='color: #FFF; display: inline-flex;'>
+                <h4 style='display: inline-flex;'>
                   Or you can <a href='payOffline.php' style='color:#55570b;'>Offline</a>
                 </h4><br>
                 
@@ -73,9 +73,9 @@ function getDefaultDetails(){
           else{
              echo "
                 <div style='padding:10px; margin-top:5%;'>
-                <h2 style='color: #FFF;'>Important!!</h2><br>
-                <h3 style='color: #FFF;'>You have no Pending Orders...</h3><br>
-                <h4 style='color: #FFF; '>You can check your orders hestory By clicking this <a href='myAccount.php?viweProfileOrder' style='color:#55570b;'> Link</a>
+                <h2>Important!!</h2><br>
+                <h3>You have no Pending Orders...</h3><br>
+                <h4 style=''>You can check your orders hestory By clicking this <a href='myAccount.php?viweProfileOrder' style='color:#55570b;'> Link</a>
                 </h4><br>
 
                 </div>
@@ -256,24 +256,28 @@ function getSeasons(){
               //$product_brand = $row_products['brand_id'];
 
                // single product starts 
-
+          echo "
+              <div class='centered'>";
               echo "
+          
                 <div class='single_product'>
+                  <div class ='_products'>
+                   <a href='productsDetail.php?products_id=$product_id''
+                      <h3 class='product_head3'>$product_title</h3>
 
-                  <h3 class='product_head3'>$product_title</h3>
-
-                  <img class='ProductImage' src='./admins_area/products_images/$product_img' width='190' height='180' /> 
-                  
-                  <p><b>Price: $product_price Rs./INR </b></p>
-
-                  <div class='img_a'>
-                    <a href='productsDetail.php?products_id=$product_id' style='float:left;'>Details</a>
-                    <a href='index.php?add_cart=$product_id'><button style='float:right;'>Add to Cart</button></a>
+                      <img class='ProductImage' src='./admins_area/products_images/$product_img' width='170' height='180' /><br> 
+                      
+                      <p><b>Price: $product_price Rs. </b></p>
+                    </a>
+                  </div>
+                  <div class='img_a'>                   
+                    <a href='index.php?add_cart=$product_id'><button style='text-align: -webkit-center;'>Add to Cart</button></a>
                   </div>  <br>   
 
                 </div>               
 
                  ";
+            echo "</div>";
               // single product ends
 
             }
@@ -387,6 +391,7 @@ function getClothTypeProducts() {
 
             }
         }
+        
 }
 
 /*<!-- FOR SAERCH FILES -->*/

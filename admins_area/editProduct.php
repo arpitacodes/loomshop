@@ -1,5 +1,11 @@
 <?php
-  include_once("./includes/adminDBconnect.php");    
+
+if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+	 include_once("../includes/PhpDBConnect.php"); 
 
  if(isset($_GET['editProduct'])){
 
@@ -364,7 +370,7 @@ $update_products = "UPDATE products SET clothtype_id='$product_cloth_type', seas
 		 if($run_productUpdate)
 		 {
             echo "<script> alert('Product Updated Sucsefully!!') </script>";
-            echo "<script>window.open('index.php?viweProducts','_self') </script>";
+            echo "<script>window.open('index.php?viewProducts','_self') </script>";
                
          }else {die(mysqli_error($connection));}
 
@@ -373,7 +379,4 @@ $update_products = "UPDATE products SET clothtype_id='$product_cloth_type', seas
 	
 ?>
 	
-
- <!-- website link for text editore 
- 
- tinymce.com  -->
+<?php } ?>

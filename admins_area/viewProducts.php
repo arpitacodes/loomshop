@@ -1,3 +1,11 @@
+<?php 
+	if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+?>
+
 <style>
 	.p_val{
 		padding: 5px;
@@ -10,17 +18,22 @@
 	}
 	th{
 		border-bottom: 2px ridge;
+		padding: 5px;
 	}
 	tr, td {
     border-right: 2px solid #60229d;
     border-top: 2px solid #60229d;
-    /* border-top: 2px solid; */
+   
 }
 </style>
 <main>
 	
 <table>
-	<div class="viwe_wrapper">
+<div class="view_wrapper">
+	
+		<tr>
+			<td colspan="8" style="border: 2px solid #60229d;"><h2>view All Products</h2></td>
+		</tr>
 		
 			<tr>
 				<th>S. No.</th>
@@ -35,7 +48,7 @@
 		
 <?php 
 
-	 include_once("./includes/adminDBconnect.php"); 
+	include_once("../includes/PhpDBConnect.php"); 
 
 	$get_prod = "SELECT * FROM products";
 
@@ -67,7 +80,7 @@
 		<td class="p_val">
 					
 		<?php 
-
+//Count totale sold products 
 		$get_sold="SELECT * FROM pending_order WHERE product_id='$product_id'";
 		$run_sold=mysqli_query($connection,$get_sold);
 
@@ -93,3 +106,5 @@
 
 </table>
 </main>
+
+<?php } ?>

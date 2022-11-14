@@ -1,29 +1,42 @@
 
 <style>
-	.chenge_pass_wrapepr{margin-top: 1.5rem;}
-	.cust_pass{
-		display: flex;
-	}
+	.chenge_pass_wrapepr{margin: 1.5rem;}
+	.cust_pass{		display: flex;	}
+
 	label{
-		width: 50%;
-		text-align: right;
+		width: 35%;
 		margin: 3px;
 	}
 	input[type="password"]{
-		width: 30%;
+		width: 25%;
 		margin: 3px;
 		padding: 2px;	
+		border-radius: 7px;
 	}
-	input[type="submit"]{width: 22%;
-		margin-top: 10px;
-		
-
-	}
+	input[type="submit"]{width: 22%;		margin-top: 10px;	border-radius: 3px;}
 h1{font-size: 27px;}
+
+@media screen and (max-width: 60em){ 
+	h1{font-size: 18px;}
+
+	.cust_pass{display: block;}
+
+	input[type=password]{width: 100%;}
+
+	.changeBtn {    text-align: -webkit-center;		}
+
+	input[type="submit"] {    width: 47%;	}
+}
+
+.changePass{
+	    text-align: center;
+	    padding: 1em;
+	  }
 </style>
+
 <div class="chenge_pass_wrapepr">
-	<center>
-		<h1>Change your Password</h1>
+	<!-- <center> -->
+		<div class="changePass"><h1>Change your Password</h1></div>
 	<form action="" method="POST">
 
 		
@@ -49,12 +62,12 @@ h1{font-size: 27px;}
 
 
 	</form>
-	</center>
+	<!-- </center> -->
 </div>
 
 <?php 
 	@session_start();
-	include("../includes/PhpDBConnect.php");
+	include_once("../includes/PhpDBConnect.php");
 
 	$email = $_SESSION['customer_email'];
 

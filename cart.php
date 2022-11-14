@@ -61,13 +61,13 @@
               <p><input type="checkbox"  name="remove[]" value="<?php echo $product_id;?>"></p>
             </div>
 
-            <div class="inputDiv">
+            <div class="imageTitle">
               <p class="img_title"><?php echo $product_title; ?></p>
               <p><img src="./admins_area/products_images/<?php echo $product_img; ?>" height="80" width="80">
               </p>
             </div>
 
-            <div class="inputDiv">
+            <div class="inputQty">
               <p><input type="text" name="quantity" value="" class="qty"></p>
             </div>
 
@@ -107,7 +107,6 @@
       }
 ?>
         <div class="totalPrice">
-          <p id="totalQty"><b>Total Product(s) Quantity:</b> <?pdp  ?></p>
           <p id="totalPrice"><b>Total Price: </b><?php echo (float)$totalprice; ?> 
              <b style="font-size: 12px;">Rs</b>
           </p>
@@ -161,69 +160,87 @@
 </main>
 
 <style>
-  .product_wrapper {   
+ .product_wrapper {   
     justify-content: center;   
-    margin-top: 8%;
+    margin: 5%;
    }
-.cart_head{
-    margin-left: 5px;
-    margin-right: 5px;
-    display: flex;
-    gap: 8rem;
-    font-size: 20px;
-    justify-content: center;
-
-}
-.cart-ditails{
+   .cart-ditails{
     height: auto;   
-    padding: 18px;    
-    margin: 8% 4% 0 2%;
-    font-size: 20px;
+    padding: 11px;    
+    margin: 5% 0 0 0;
+    font-size: 17px;
     display: flex;
-    gap: 10rem;
-}
+    justify-content: space-between;
+  }
 
-.img_title{
-  width: max-content;
-  font-size: 17px;
-}
-.qty{
-  width: 3.5rem;
-  margin-top: 5px;
-}
-.totalPrice{
+  .imageTitle {text-align: -webkit-center;}
+
+ .inputDiv{   align-self: center;}
+
+  .img_title{   font-size: 17px; height: auto;}
+  .inputQty{   align-self: center;}
+  .qty{
+    width: 3.5rem;
+    margin-top: 5px;
+  }
+  .totalPrice{
+      float: right;
+      font-size: 14.5px;
+
+  }
+
+  .bottons{
+    margin-top: 3rem;
     display: flex;
-   justify-content: space-between;
-    float: right;
-    width: 45%;
-    font-size: 14.5px;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .bottons button input[type='submit']{
+    border: 1px solid #454545;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .bottons .ckeckout{
+    font-size: 15px; 
+    color: #000;
+    border: 1px solid #454545;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+@media screen and (min-width: 40em){
+ 
+   .cart_head{
+    display: flex;
+    font-size: 18px;
+    justify-content: space-between;
+    flex: 0 1 calc(50% - 1em);
+
+  }
+  
 
 }
-#totalQty{
 
-}
 
-#totalPrice{
+@media screen and (max-width: 60em){
 
-}
-.bottons{
-  margin-top: 5rem;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 7rem;
-}
-.bottons button input[type='submit']{
-  border: 1px solid #454545;
-  font-size: 15px;
-  padding: 5px;
-  border-radius: 3px;
-}
+  .cart_head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  .img_title {    font-size: 13px;}
+  img {    width: 35%;    height: 50%; }
 
-.bottons .ckeckout{
-  font-size: 15px; 
-  color: #000;
-  border: 1px solid #454545;
-  padding: 5px;
-  border-radius: 3px;
+  .inputQty{margin-right: 19px;     align-self: center;}
+  .qty{width: 2.5rem;}
+  #totalPrice{font-size: 12px;}
+  .bottons button input[type='submit']{ font-size: 10px;}
+
+  .bottons .ckeckout {    font-size: 10px;}
+  .bottons{      margin-bottom: 3rem;  }
+
 }
 </style>

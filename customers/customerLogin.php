@@ -1,28 +1,98 @@
 
 <?php
     @session_start();
-    include("./includes/PhpDBConnect.php");
-   // include("./functions/indexFunction.php"); 
+    //include_once("./includes/PhpDBConnect.php");   
+   
 ?>
 <div class="login_form">
 	<form action="checkout.php " method="POST" class="to_cust_login">
-     <h2>Login OR Register</h2>
+     <h2>Login OR Register</h2><br>
 		<label>Enter Your E-mail:</label>
-		<input type="e-mail" name="customer_mail" placeholder="Your E-mail"><br>
+		<input type="e-mail" name="customer_mail" placeholder="Your E-mail" required/><br>
 		<label>Enter Your Password: </label>
-		<input type="password" name="mail_password" placeholder="Your Password"><br>
-		<p class="regitretion"><a href="custForgetPasswor.php">Forget password</a></p>
-		<input type="submit" name="to_login" value="Login">
+		<input type="password" name="mail_password" placeholder="Your Password" required /><br>
+		<p class="regitretion">
+			<a href="checkout.php?custForgetPassword">Forget password?</a>
+		</p>
+		<input type="submit" name="to_login" value="Login"><br>
 	</form>
 
-	<p class="regitretion"><a href="custRegistretion.php">Register Now</a></p>
+	<?php 
+		if (isset($_GET['custForgetPassword'])) {
+			
+			echo "
+
+			<div>
+				<form action='' method='POST'>
+				  <br><b>Enter Your e- mail,
+				  We'll send your password on your email </b> <br><br>
+				  <input type='e-mail' name='cust_mail' placeholder='Enter Your E-mail' required /><br>
+				  <input type='submit' name='forg_pass' value='Send'/><br>
+			    </form>
+			</div>
+			";
+		}
+if(isset($_POST['forg_pass'])){
+	$c_mail =$_POST['cust_mail'];
+
+	$sel_cust= "SELECT * FROM customers WHERE customer_email = '$c_mail'";
+
+	$run_cust = mysqli_query($connection, $sel_cust);
+
+	$ckeck_cust = mysqli_num_rows($run_cust);
+
+	$row_cust= mysqli_fetch_array($run_cust);
+
+	$cust_name = $row_cust['customer_name'];
+	$cust_pass = $row_cust['customer_password'];
+
+	if($ckeck_cust == 0){
+
+		echo "<script>alert('This E-mail does not exist. SORRY!!')</script>";
+		exit();
+
+	}
+	else{
+		
+		$from = 'admin@sutwala.com';
+
+		$subject = 'Your Password';
+
+		$message = "
+
+			<div>
+			 <h3>Dear $cust_name</h3><br>
+			 <p>You requested for your password at <b>www.sutwala.com</b></p>
+			 <b> Your Password is </b> <span>$cust_pass</span> <br> <br>
+
+			 <h3>Thank You for using our website..</h3><br><br>
+			</div> 
+
+
+		";
+
+		mail($cust_mail, $subject, $message, $from);
+
+		echo "<script>alert('Password was sent on your email, please check your email inbox !')</script>";
+		echo "<script>window.open('checkout.php','_self')</script>";
+
+
+		}
+
+
+	}
+
+
+	?>
+
+	<p class="regitretion"><a href="custRegistretion.php">New? Register Here</a></p>
 </div>
 
 <style>
 	.login_form{
 	width: 30%;
     font-size: 18px;
-    margin-left: 20rem;
+   
 	}
 
 	input[type="submit"] {
@@ -33,8 +103,8 @@
 input[type="submit"]:hover{color: hsl(353, 100%, 78%);}
 .regitretion{
 	/*text-align: center;*/
-	margin-left: 4.5rem;
-    margin-top: 10px;
+	/*margin-left: 4.5rem;*/
+    /*margin-top: 10px;*/
     margin-bottom: 10px;
 	}
 
@@ -50,7 +120,9 @@ input[type='e-mail'], input[type='password']{
 	if(isset($_POST['to_login'])){
 		$customer_email = $_POST['customer_mail'];
 		$customer_password = $_POST['mail_password'];
+
 $select_customer="SELECT * FROM customers WHERE customer_email='$customer_email' AND customer_password = '$customer_password'";
+
 		$run_customer = mysqli_query($connection, $select_customer);
 
 		$check_customer = mysqli_num_rows($run_customer);

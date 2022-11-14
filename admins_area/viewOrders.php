@@ -1,3 +1,10 @@
+<?php 
+	if(!isset($_SESSION['admin_email'])){
+		echo "<script>window.open('AdminLogin.php','_self')</script>";
+	}
+	else{
+
+?>
 <style>
 	.p_val{
 		padding: 5px;
@@ -10,6 +17,7 @@
 	}
 	th{
 		border-bottom: 2px ridge;
+		padding: 5px;
 	}
 	tr, td {
     border-right: 2px solid #60229d;
@@ -19,8 +27,10 @@
 <main>
 	
 <table>
-	<div class="viwe_wrapper">
-		
+	<div class="view_wrapper">
+		<tr>
+			<td colspan="7" style="border: 2px solid #60229d;"><h2>view All Orders</h2></td>
+		</tr>
 			<tr>
 				<th>Order No.</th>
 				<th>Customer e-mail</th>
@@ -33,9 +43,9 @@
 
 <?php 
 
-	 include_once("./includes/adminDBconnect.php"); 
+	 include_once("../includes/PhpDBConnect.php"); 
 
-	$get_orders = "SELECT * FROM customer_order";
+	$get_orders = "SELECT * FROM pending_order";
 
 	$run_orders =mysqli_query($connection,$get_orders);
 
@@ -55,7 +65,19 @@
 		
 	<tr>
 		<td class="p_val"><?php echo $i; ?></td>
-		<td class="p_val"></td>
+		<td class="p_val">
+			<?php 
+	$get_customer= "SELECT * FROM customers WHERE customer_id = '$customer_id'";
+				
+				$run_cust = mysqli_query($connection,$get_customer);
+
+				$row_cust= mysqli_fetch_array($run_cust);
+
+				$customer_mail = $row_cust['customer_email'];
+
+				echo $customer_mail;
+			?>
+		</td>
 		<td class="p_val"><?php echo $invoice_no; ?></td>
 		<td class="p_val"><?php echo  $product_id; ?></td>
 		<td class="p_val"><?php echo  $product_qut; ?></td>		
@@ -75,7 +97,7 @@
 		 	
 		</td>
 		<td class="p_val">
-		   <a href="deleteCustomer.php?deleteCustomer=<?php echo $customer_id; ?>">Delete</a>
+		   <a href="deleteCustomerOrders.php?deleteCustomerOrders=<?php echo $customer_id; ?>">Delete</a>
 		</td>
 		
 	</tr>
@@ -88,4 +110,4 @@
 </table>
 </main>
 
-
+<?php } ?>

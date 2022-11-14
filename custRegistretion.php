@@ -1,3 +1,7 @@
+<!-- To view all putted data currentli -->
+<?php   $form_complete = null; ?>
+
+
 <?php
    @session_start();
    include_once("./pages/head.php");
@@ -23,13 +27,32 @@
           <div class="filed_wrapper">
 
             <div class="cust_name">
+              <?php
+               if(isset ($_POST['customer_name']) && empty(trim ($_POST['customer_name'])))
+               { echo "<p class=\'alert\'>Name is required</p>";
+                  $form_complete = false;
+               }
+              ?>
               <label><b>Your Full Name :</b></label>
               <input type="text" name="customer_name" placeholder="Full Name.." required/>
             </div>  
 
             <div class="cust_mail">
+              <?php
+                $emil_regex = '^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$^';
+                if(isset ($_POST['customer_email']) && empty(trim($_POST['customer_mail'])))
+                { echo "<p class=\'alert\'>E-mail is required</p>";
+                    $form_complete = false;
+
+                }
+                elseif(isset($_POST['customer_mail']) && !preg_match($emil_regex, $_POST['customer_mail'])){
+                  echo "<p class=\'alert\'>Please enter a valid E-mail Address.</p>";
+                  $form_complete = false;
+                }
+              ?>
               <label><b>Your E-mail :</b></label>
               <input type="text" name="customer_mail"  placeholder="E-mail.." required/>
+
             </div> 
 
             <div class="cust_pass">
@@ -170,7 +193,7 @@
     $check_cart = mysqli_num_rows($run_cart);
 
       if($check_cart > 0){
-        $_SESSION['customer_mai]']= $cust_mail;
+        $_SESSION['customer_mail]']= $cust_mail;
         echo "<script>alert('Account Created Successfully, Thank You!!!')</script>";
         echo "<script>window.open('checkout.php','_self')</script>";
       }
@@ -184,3 +207,31 @@
   }
 
   ?>
+<?php 
+  $form_complete ?: true;
+  if($form_complete){
+    foreach($_POST as $name => $value){
+      if('submit' != $name){
+        if(is_array($value)){
+          $value=implode(',', $value);
+        }
+        echo "<p><b>".ucfirst($name)."</b> is $value.</p>";
+      }
+    }
+  }
+
+?>
+
+<?php 
+  
+  if(!empty($_POST)){
+    foreach($_POST as $value){
+      $value = trim($value);
+    }
+//FILTER E-mail
+    $_POST['customer_mail'] = filter_var($_POST['customer_mail'], FILTER_SANITIZE_EMAIL);
+
+  }
+
+?>
+
